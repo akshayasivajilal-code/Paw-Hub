@@ -1,0 +1,249 @@
+/* ===========================================
+             PAWHUB LOGIN PAGE
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    background:linear-gradient(135deg,#1565ff,#4fa3ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* ================= LOGIN CONTAINER ================= */
+
+.login-container{
+    width:100%;
+    max-width:1000px;
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    display:flex;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+/* ================= LEFT SIDE ================= */
+
+.login-left{
+    width:50%;
+    background:linear-gradient(135deg,#1565ff,#4fa3ff);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    text-align:center;
+}
+
+.login-left img{
+    width:250px;
+    margin-bottom:30px;
+}
+
+.login-left h1{
+    font-family:'Sora',sans-serif;
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.login-left p{
+    font-size:18px;
+    line-height:1.8;
+    opacity:.95;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.login-right{
+    width:50%;
+    padding:60px;
+}
+
+.login-right h2{
+    font-family:'Sora',sans-serif;
+    font-size:36px;
+    color:#1565ff;
+    margin-bottom:10px;
+}
+
+.login-right p{
+    color:#777;
+    margin-bottom:35px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#444;
+}
+
+.input-group input{
+    width:100%;
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    border-color:#1565ff;
+    box-shadow:0 0 10px rgba(21,101,255,.2);
+}
+
+/* ================= OPTIONS ================= */
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    font-size:15px;
+}
+
+.options a{
+    text-decoration:none;
+    color:#1565ff;
+}
+
+.options a:hover{
+    text-decoration:underline;
+}
+
+/* ================= BUTTON ================= */
+
+.login-btn{
+    width:100%;
+    border:none;
+    background:#1565ff;
+    color:#fff;
+    padding:16px;
+    border-radius:12px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#0d47c9;
+    transform:translateY(-3px);
+}
+
+/* ================= REGISTER ================= */
+
+.register{
+    text-align:center;
+    margin-top:25px;
+}
+
+.register a{
+    color:#1565ff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register a:hover{
+    text-decoration:underline;
+}
+
+/* ================= SOCIAL LOGIN ================= */
+
+.social-login{
+    margin-top:35px;
+    text-align:center;
+}
+
+.social-login p{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.social-icons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.social-icons a{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#eef5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    color:#1565ff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.social-icons a:hover{
+    background:#1565ff;
+    color:#fff;
+    transform:translateY(-5px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.login-container{
+    flex-direction:column;
+}
+
+.login-left,
+.login-right{
+    width:100%;
+}
+
+.login-left{
+    padding:40px 25px;
+}
+
+.login-left img{
+    width:180px;
+}
+
+.login-right{
+    padding:40px 25px;
+}
+
+}
+
+@media(max-width:600px){
+
+.login-left h1{
+    font-size:32px;
+}
+
+.login-right h2{
+    font-size:30px;
+}
+
+.options{
+    flex-direction:column;
+    gap:15px;
+    align-items:flex-start;
+}
+
+.social-icons{
+    gap:15px;
+}
+
+}
