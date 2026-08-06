@@ -1,11 +1,7 @@
-/* ===========================================
-           PAWHUB HOME PAGE - PART 1
-=========================================== */
 
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
 
-/* Reset */
+
 
 *{
     margin:0;
@@ -26,104 +22,125 @@ body{
 
 }
 
-/* ================= HEADER ================= */
+
+/* HEADER */
 
 header{
-
-    width:100%;
-    height:90px;
-
-    background:white;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    padding:0 70px;
-
+    padding:18px 60px;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
     position:sticky;
-
     top:0;
-
-    z-index:999;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
-
+    z-index:1000;
 }
 
-/* Logo */
-
 .logo{
-
     display:flex;
-
     align-items:center;
-
-    gap:15px;
-
+    gap:10px;
 }
 
 .logo img{
-
-    width:55px;
-
+    width:50px;
 }
 
 .logo h2{
-
     font-family:'Sora',sans-serif;
-
-    font-size:30px;
-
     color:#1565ff;
-
-    font-weight:800;
-
 }
 
-/* Icons */
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    gap:30px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.navbar a:hover{
+    color:#1565ff;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:#1565ff;
+    transition:.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* ICONS */
 
 .nav-icons{
-
     display:flex;
-
-    gap:18px;
-
+    gap:15px;
 }
 
 .icon-btn{
-
-    width:50px;
-
-    height:50px;
-
+    width:42px;
+    height:42px;
     border:none;
-
     border-radius:50%;
-
-    background:#edf5ff;
-
+    background:#eef4ff;
     cursor:pointer;
-
-    font-size:20px;
-
-    transition:.35s;
-
+    font-size:18px;
+    transition:.3s;
 }
 
 .icon-btn:hover{
-
     background:#1565ff;
-
-    color:white;
-
-    transform:translateY(-4px);
-
+    color:#fff;
 }
 
-/* ================= HERO ================= */
+/* SEARCH BAR */
+
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#f4f7ff;
+    border-radius:30px;
+    overflow:hidden;
+    border:1px solid #dbe4ff;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    padding:10px 15px;
+    width:220px;
+    background:transparent;
+    font-size:15px;
+}
+
+.search-box button{
+    border:none;
+    background:#1565ff;
+    color:white;
+    padding:10px 16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#0b4fd4;
+}
 
 .hero{
 
@@ -141,7 +158,7 @@ header{
 
 }
 
-/* Left */
+
 
 .hero-text{
 
@@ -181,7 +198,7 @@ header{
 
 }
 
-/* Explore Button */
+
 
 .explore-btn{
 
@@ -217,7 +234,7 @@ header{
 
 }
 
-/* Right Hero */
+
 
 .hero-image{
 
@@ -261,7 +278,7 @@ header{
 
 }
 
-/* Floating Animation */
+
 
 @keyframes float{
 
@@ -286,11 +303,6 @@ header{
 }
 
 
-/* ===========================================
-           PAWHUB HOME PAGE - PART 2
-=========================================== */
-
-/* ========== SERVICES SECTION ========== */
 
 .services{
     width:100%;
@@ -315,7 +327,7 @@ header{
 
 }
 
-/* Card */
+
 
 .card{
 
@@ -395,7 +407,7 @@ header{
 
 }
 
-/* Different Hover Colors */
+
 
 .card:nth-child(1):hover{
 
@@ -433,7 +445,6 @@ header{
 
 }
 
-/* ========== CTA SECTION ========== */
 
 .cta{
 
@@ -499,7 +510,7 @@ header{
 
 }
 
-/* ========== FOOTER ========== */
+
 
 footer{
 
@@ -534,11 +545,6 @@ footer p{
 }
 
 
-/* ===========================================
-           PAWHUB HOME PAGE - PART 3
-=========================================== */
-
-/* ========== BUTTON ANIMATIONS ========== */
 
 .explore-btn,
 .card,
@@ -554,7 +560,6 @@ footer p{
     transform:scale(.96);
 }
 
-/* ========== SCROLLBAR ========== */
 
 ::-webkit-scrollbar{
     width:10px;
@@ -573,14 +578,13 @@ footer p{
     background:#0d47c9;
 }
 
-/* ========== SELECTION ========== */
+
 
 ::selection{
     background:#1565ff;
     color:#fff;
 }
 
-/* ========== IMAGE EFFECTS ========== */
 
 .hero-image img{
 
@@ -606,8 +610,6 @@ footer p{
 
 }
 
-/* ========== CARD TITLE ========== */
-
 .card h3{
 
     transition:.3s;
@@ -619,8 +621,6 @@ footer p{
     letter-spacing:1px;
 
 }
-
-/* ========== CARD PARAGRAPH ========== */
 
 .card p{
 
@@ -634,7 +634,6 @@ footer p{
 
 }
 
-/* ========== RESPONSIVE ========== */
 
 @media(max-width:1200px){
 
@@ -668,7 +667,6 @@ footer p{
 
 }
 
-/* Tablet */
 
 @media(max-width:768px){
 
@@ -749,8 +747,6 @@ header{
 }
 
 }
-
-/* Mobile */
 
 @media(max-width:500px){
 
@@ -865,5 +861,3 @@ footer h3{
 }
 
 }
-
-/* ========== END ========== */

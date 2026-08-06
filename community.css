@@ -58,47 +58,91 @@ header{
 }
 
 /* ================= HERO ================= */
+/* HEADER */
 
-.hero{
+header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:70px;
+    padding:18px 60px;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.hero-text{
-    width:50%;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.hero-text h1{
+.logo img{
+    width:50px;
+}
+
+.logo h2{
     font-family:'Sora',sans-serif;
-    font-size:55px;
-    margin-bottom:20px;
+    color:#1565ff;
 }
 
-.hero-text p{
-    color:#666;
-    font-size:18px;
-    line-height:1.8;
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    gap:30px;
 }
 
-.join-btn{
-    margin-top:30px;
-    padding:16px 38px;
-    border:none;
-    border-radius:50px;
+.navbar a{
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.navbar a:hover{
+    color:#1565ff;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
     background:#1565ff;
-    color:#fff;
-    cursor:pointer;
-    font-size:17px;
     transition:.3s;
 }
 
-.join-btn:hover{
-    background:#0d47c9;
-    transform:translateY(-4px);
+.navbar a:hover::after{
+    width:100%;
 }
 
+/* ICONS */
+
+.nav-icons{
+    display:flex;
+    gap:15px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#eef4ff;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    background:#1565ff;
+    color:#fff;
+}
 .hero-image{
     width:40%;
     text-align:center;
