@@ -1,0 +1,1411 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: #172554;
+    background: #f5f9ff;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    height: 82px;
+    width: 100%;
+
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(191, 219, 254, 0.65);
+
+    box-shadow:
+        0 4px 20px rgba(37, 99, 235, 0.06);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* Blue Paw Logo */
+
+.logo-box {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2658F9;
+
+    border-radius: 16px;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 8px 20px rgba(38, 88, 249, 0.24);
+}
+
+
+/* PAWHUB Text */
+
+.logo-text h2 {
+    font-family: 'Sora', sans-serif;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    color: #2563eb;
+}
+
+
+/* Subtitle */
+
+.logo-text span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   NAVIGATION ICONS
+========================================================= */
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.icon-btn {
+    width: 46px;
+    height: 46px;
+
+    border: 1.5px solid #dbeafe;
+
+    border-radius: 14px;
+
+    background: #f8fbff;
+
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+.icon-btn span {
+    display: block;
+    line-height: 1;
+}
+
+.icon-btn:hover {
+    background: #2563eb;
+    color: white;
+
+    border-color: #2563eb;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 700px;
+
+    padding: 65px 8% 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 55px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 88% 15%,
+            rgba(253, 230, 138, 0.55) 0,
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 7% 88%,
+            rgba(147, 197, 253, 0.50) 0,
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #edf6ff 0%,
+            #ffffff 48%,
+            #fffbea 100%
+        );
+}
+
+
+/* =========================================================
+   HERO DECORATIVE SHAPES
+========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 560px;
+    height: 560px;
+
+    right: -180px;
+    top: -210px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(253, 224, 71, 0.28),
+            rgba(253, 224, 71, 0.08) 55%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    left: -180px;
+    bottom: -190px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(96, 165, 250, 0.25),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-text {
+    flex: 1;
+
+    max-width: 650px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   HERO BADGE
+========================================================= */
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 10px 18px;
+
+    margin-bottom: 20px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid #dbeafe;
+
+    color: #2563eb;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 8px 22px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
+.hero-text h1 {
+    font-family: 'Sora', sans-serif;
+
+    font-size: clamp(48px, 5.5vw, 76px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+
+    color: #172554;
+}
+
+.hero-text h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #3b82f6,
+            #60a5fa
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+}
+
+
+/* Heading underline */
+
+.hero-text h1::after {
+    content: "";
+
+    display: block;
+
+    width: 165px;
+
+    height: 9px;
+
+    margin-top: 13px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #93c5fd,
+            #60a5fa
+        );
+
+    transform: rotate(-1deg);
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-text p {
+    max-width: 580px;
+
+    margin-bottom: 30px;
+
+    color: #64748b;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+========================================================= */
+
+.explore-btn {
+    border: none;
+
+    padding: 16px 29px;
+
+    border-radius: 15px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 30px rgba(37, 99, 235, 0.28);
+
+    transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(37, 99, 235, 0.34);
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.hero-stats {
+    display: flex;
+
+    gap: 0;
+
+    margin-top: 38px;
+}
+
+.stat {
+    min-width: 110px;
+
+    padding: 0 25px;
+
+    border-right: 1px solid #cbd5e1;
+}
+
+.stat:first-child {
+    padding-left: 0;
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat strong {
+    display: block;
+
+    font-family: 'Sora', sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #172554;
+}
+
+.stat span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-image {
+    flex: 1;
+
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+.blended-image {
+    width: min(455px, 90%);
+
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #ffffff 0%,
+            #eef6ff 42%,
+            #dbeafe 72%,
+            #bfdbfe 100%
+        );
+
+    box-shadow:
+        0 30px 75px rgba(37, 99, 235, 0.20);
+
+    animation:
+        floatImage 4s ease-in-out infinite;
+}
+
+.blended-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -20px;
+
+    border: 2px dashed #93c5fd;
+
+    border-radius: 50%;
+
+    opacity: 0.85;
+
+    animation:
+        rotateCircle 20s linear infinite;
+}
+
+.blended-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.90);
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 40px rgba(37, 99, 235, 0.08);
+
+    pointer-events: none;
+}
+
+.blended-image img {
+    content: url("/images/home1.png");
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    position: relative;
+
+    z-index: 3;
+
+    background: transparent;
+
+    filter:
+        drop-shadow(
+            0 15px 25px rgba(37, 99, 235, 0.12)
+        );
+
+    transition:
+        transform 0.4s ease;
+}
+
+.blended-image:hover img {
+    transform: scale(1.045);
+}
+
+
+/* =========================================================
+   FLOATING PET BADGES
+========================================================= */
+
+.pet-badge {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 66px;
+    height: 66px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 4px solid white;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.14);
+
+    animation:
+        badgeFloat 3s ease-in-out infinite;
+}
+
+.badge1 {
+    top: 50px;
+    right: 4%;
+}
+
+.badge2 {
+    left: 4%;
+    bottom: 55px;
+
+    animation-delay: 0.8s;
+}
+
+.badge3 {
+    right: -1%;
+    top: 47%;
+
+    animation-delay: 1.5s;
+}
+
+
+/* =========================================================
+   DECORATIVE PAWS
+========================================================= */
+
+.paw {
+    position: absolute;
+
+    z-index: 1;
+
+    opacity: 0.14;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+.paw1 {
+    top: 100px;
+    left: 47%;
+
+    font-size: 60px;
+
+    transform: rotate(-18deg);
+}
+
+.paw2 {
+    left: 8%;
+    bottom: 65px;
+
+    font-size: 48px;
+
+    transform: rotate(20deg);
+}
+
+.paw3 {
+    top: 90px;
+    right: 8%;
+
+    font-size: 54px;
+
+    transform: rotate(15deg);
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services {
+    position: relative;
+
+    padding: 90px 7%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f3f8ff
+        );
+}
+
+.services::before {
+    content: "🐾";
+
+    position: absolute;
+
+    top: 30px;
+    left: 4%;
+
+    font-size: 72px;
+
+    opacity: 0.08;
+
+    transform: rotate(-20deg);
+}
+
+.services::after {
+    content: "🐾";
+
+    position: absolute;
+
+    right: 4%;
+    bottom: 35px;
+
+    font-size: 72px;
+
+    opacity: 0.08;
+
+    transform: rotate(18deg);
+}
+
+.services h2 {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+    font-family: 'Sora', sans-serif;
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    font-weight: 800;
+
+    color: #172554;
+}
+
+.services h2::after {
+    content: "🐾";
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   SERVICE CARDS
+========================================================= */
+
+.cards {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 27px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.card {
+    min-height: 345px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    background: white;
+
+    border: 1px solid #e5edf9;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 28px rgba(37, 99, 235, 0.07);
+
+    transition:
+        all 0.35s ease;
+}
+
+.card::before {
+    content: "";
+
+    display: block;
+
+    height: 6px;
+
+    background: #2563eb;
+}
+
+.card::after {
+    content: "→";
+
+    position: absolute;
+
+    right: 20px;
+    bottom: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    transform: translateX(-8px);
+
+    transition:
+        all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 22px 45px rgba(37, 99, 235, 0.14);
+}
+
+.card:hover::after {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+.card img {
+    width: 100%;
+    height: 190px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.45s ease;
+}
+
+.card:hover img {
+    transform: scale(1.07);
+}
+
+.card h3 {
+    margin:
+        19px 24px 7px;
+
+    font-family: 'Sora', sans-serif;
+
+    font-size: 20px;
+
+    color: #172554;
+}
+
+.card:hover h3 {
+    color: #2563eb;
+}
+
+.card p {
+    margin:
+        0 24px;
+
+    max-width: 230px;
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   CARD COLORS
+========================================================= */
+
+.card:nth-child(1)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+}
+
+.card:nth-child(2)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #f59e0b,
+            #fbbf24
+        );
+}
+
+.card:nth-child(3)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #ef4444,
+            #fb7185
+        );
+}
+
+.card:nth-child(4)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #10b981,
+            #34d399
+        );
+}
+
+.card:nth-child(5)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #a78bfa
+        );
+}
+
+.card:nth-child(6)::before {
+    background:
+        linear-gradient(
+            90deg,
+            #06b6d4,
+            #67e8f9
+        );
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #1e3a8a
+        );
+}
+
+footer h3 {
+    margin-bottom: 9px;
+
+    font-family: 'Sora', sans-serif;
+
+    font-size: 24px;
+
+    letter-spacing: 1px;
+}
+
+footer p {
+    color: #cbd5e1;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rotateCircle {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    .hero {
+        padding:
+            60px 6%
+            70px;
+
+        gap: 35px;
+    }
+
+    .hero-text h1 {
+        font-size: 52px;
+    }
+
+    .blended-image {
+        width: 390px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        height: 72px;
+        padding: 0 18px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo-box {
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
+    }
+
+    .logo-text h2 {
+        font-size: 20px;
+    }
+
+    .logo-text span {
+        font-size: 8px;
+    }
+
+    .nav-icons {
+        gap: 6px;
+    }
+
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: auto;
+
+        padding:
+            55px 22px 75px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 20px;
+    }
+	
+	.hero {
+	    border-bottom-left-radius: 45px;
+	    border-bottom-right-radius: 45px;
+	}
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-badge {
+        margin-bottom: 18px;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .hero-text h1::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+	.explore-btn {
+	    position: relative;
+	    overflow: hidden;
+	}
+
+	.explore-btn::before {
+	    content: "";
+	    position: absolute;
+
+	    top: 0;
+	    left: -100%;
+
+	    width: 70%;
+	    height: 100%;
+
+	    background: linear-gradient(
+	        90deg,
+	        transparent,
+	        rgba(255,255,255,0.30),
+	        transparent
+	    );
+
+	    transform: skewX(-20deg);
+
+	    transition: left 0.6s ease;
+	}
+
+	.explore-btn:hover::before {
+	    left: 130%;
+	}
+
+    /* STATS */
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .stat {
+        min-width: auto;
+
+        padding:
+            0 13px;
+    }
+
+    .stat strong {
+        font-size: 17px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+
+
+    /* HERO IMAGE */
+
+    .hero-image {
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .blended-image {
+        width: 285px;
+    }
+
+    .blended-image img {
+        width: 72%;
+        height: 72%;
+    }
+
+
+    /* BADGES */
+
+    .pet-badge {
+        width: 52px;
+        height: 52px;
+
+        font-size: 23px;
+    }
+
+    .badge1 {
+        top: 25px;
+        right: 5%;
+    }
+
+    .badge2 {
+        bottom: 25px;
+        left: 5%;
+    }
+
+    .badge3 {
+        right: -2%;
+    }
+
+
+    /* SERVICES */
+
+    .services {
+        padding:
+            65px 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .card {
+        min-height: 330px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .hero-text h1 {
+        font-size: 35px;
+    }
+
+    .blended-image {
+        width: 250px;
+    }
+
+    .pet-badge {
+        width: 46px;
+        height: 46px;
+
+        font-size: 20px;
+    }
+
+    .hero-image {
+        min-height: 300px;
+    }
+	
+	/* =========================================================
+	   HERO IMAGE - PREMIUM EFFECT
+	========================================================= */
+
+	.blended-image {
+	    transition: transform 0.4s ease, box-shadow 0.4s ease;
+	}
+
+	.blended-image:hover {
+	    transform: translateY(-8px) scale(1.02);
+
+	    box-shadow:
+	        0 35px 85px rgba(37, 99, 235, 0.25);
+	}
+
+	.blended-image img {
+	    filter:
+	        drop-shadow(0 18px 30px rgba(37, 99, 235, 0.18));
+	}
+
+
+	/* Soft glow behind the pet/logo */
+
+	.hero-image::before {
+	    content: "";
+
+	    position: absolute;
+
+	    width: 380px;
+	    height: 380px;
+
+	    border-radius: 50%;
+
+	    background:
+	        radial-gradient(
+	            circle,
+	            rgba(59, 130, 246, 0.16),
+	            transparent 68%
+	        );
+
+	    filter: blur(10px);
+
+	    z-index: -1;
+
+	    pointer-events: none;
+	}
+	/* =========================================================
+	   PREMIUM SERVICE CARDS
+	========================================================= */
+
+	.card {
+	    transform: translateY(0);
+	    transition:
+	        transform 0.3s ease,
+	        box-shadow 0.3s ease,
+	        border-color 0.3s ease;
+	}
+
+	.card:hover {
+	    transform: translateY(-10px);
+
+	    box-shadow:
+	        0 25px 50px rgba(37, 99, 235, 0.16);
+	}
+
+	.card img {
+	    transition:
+	        transform 0.45s ease;
+	}
+
+	.card:hover img {
+	    transform: scale(1.06);
+	}
+
+	.card h3 {
+	    transition:
+	        color 0.25s ease,
+	        transform 0.25s ease;
+	}
+
+	.card:hover h3 {
+	    color: #2563eb;
+	    transform: translateX(3px);
+	}
+
+	.card::after {
+	    transition:
+	        opacity 0.3s ease,
+	        transform 0.3s ease,
+	        background 0.3s ease;
+	}
+
+	.card:hover::after {
+	    background: #2563eb;
+	    color: white;
+	}
+}

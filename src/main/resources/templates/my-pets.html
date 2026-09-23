@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PAWHUB | My Pets</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/style/my-pets.css">
+</head>
+
+<body>
+
+<!-- ================= BACKGROUND DECORATION ================= -->
+
+<div class="bg-paw paw-one">🐾</div>
+<div class="bg-paw paw-two">🐾</div>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-paws">
+            🐾
+        </div>
+
+        <div class="brand-text">
+            <h2>PAWHUB</h2>
+            <span>Pet Care Community</span>
+        </div>
+
+    </div>
+
+	<div class="nav-icons">
+
+	    <button class="icon-btn wishlist-nav-btn"
+	            onclick="openWishlist()"
+	            title="Wishlist">
+	        ❤️
+	    </button>
+
+	    <button class="icon-btn"
+	            onclick="openCart()"
+	            title="Cart">
+	        🛒
+	    </button>
+
+	    <button class="icon-btn"
+	            onclick="toggleMenu()"
+	            title="Menu">
+	        ☰
+	    </button>
+
+	</div>
+
+</header>
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+    <!-- PAGE HEADING -->
+
+    <section class="heading">
+
+        <div class="heading-left">
+
+            <div class="heading-icon">
+                🐶
+            </div>
+
+            <div class="heading-content">
+
+                <span class="small-title">
+                    MY PAWHUB
+                </span>
+
+                <h1>
+                    My <span>Pets</span> ❤️
+                </h1>
+
+                <p>
+                    Manage your lovely companions
+                </p>
+
+            </div>
+
+        </div>
+
+        <button class="add-btn"
+                onclick="window.location.href='/add-pet'">
+
+            + Add My Pet 🐾
+
+        </button>
+
+    </section>
+
+
+    <!-- ================= PETS ================= -->
+
+    <section id="petsContainer">
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                🐾
+            </div>
+
+            <h2>
+                Loading your pets...
+            </h2>
+
+            <p>
+                Please wait while we fetch your furry friends.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* =====================================================
+   LOAD MY PETS
+   ===================================================== */
+
+async function loadMyPets() {
+
+    const container =
+        document.getElementById("petsContainer");
+
+    const loggedInUser =
+        JSON.parse(
+            localStorage.getItem("loggedInUser")
+        );
+
+
+    /* ================= LOGIN CHECK ================= */
+
+    if (!loggedInUser || !loggedInUser.id) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🔐
+                </div>
+
+                <h2>
+                    Please Login 🐾
+                </h2>
+
+                <p>
+                    Login to view your pets.
+                </p>
+
+                <button
+                    class="empty-add"
+                    onclick="window.location.href='/login'">
+
+                    Login
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    try {
+
+        /* ================= FETCH PETS ================= */
+
+        const response =
+            await fetch(
+                "/api/pets/user/" +
+                loggedInUser.id
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to fetch pets"
+            );
+
+        }
+
+
+        const myPets =
+            await response.json();
+
+
+        /* ================= NO PETS ================= */
+
+        if (myPets.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        🐶
+                    </div>
+
+                    <h2>
+                        No Pets Added Yet 🐾
+                    </h2>
+
+                    <p>
+                        Add your lovely companion
+                        to your PAWHUB family.
+                    </p>
+
+                    <button
+                        class="empty-add"
+                        onclick="window.location.href='/add-pet'">
+
+                        + Add Your First Pet
+
+                    </button>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        /* ================= DISPLAY PETS ================= */
+
+        container.innerHTML =
+
+            myPets.map(pet => {
+
+                const imageSection =
+
+                    pet.image
+
+                    ? `
+
+                        <img
+                            src="${pet.image}"
+                            alt="${pet.name}"
+                            onerror="
+                                this.style.display='none';
+                                this.nextElementSibling.style.display='flex';
+                            "
+                        >
+
+                        <div
+                            class="pet-placeholder"
+                            style="display:none;">
+
+                            🐾
+
+                        </div>
+
+                    `
+
+                    : `
+
+                        <div class="pet-placeholder">
+                            🐾
+                        </div>
+
+                    `;
+
+
+                return `
+
+                    <article class="pet-card">
+
+                        <!-- PET IMAGE -->
+
+                        <div class="pet-image">
+
+                            ${imageSection}
+
+                            <div class="pet-status">
+                                My Pet ❤️
+                            </div>
+
+                        </div>
+
+
+                        <!-- PET CONTENT -->
+
+                        <div class="pet-content">
+
+                            <div class="pet-name">
+
+                                <h2>
+                                    ${escapeHTML(pet.name || "Unnamed Pet")}
+                                </h2>
+
+                                <span>
+                                    🐾
+                                </span>
+
+                            </div>
+
+
+                            <!-- PET INFORMATION -->
+
+                            <div class="pet-info">
+
+                                <div class="info-item">
+
+                                    <span class="info-label">
+                                        Type
+                                    </span>
+
+                                    <span class="info-value">
+                                        ${escapeHTML(pet.type || "Not specified")}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info-item">
+
+                                    <span class="info-label">
+                                        Breed
+                                    </span>
+
+                                    <span class="info-value">
+                                        ${escapeHTML(pet.breed || "Not specified")}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info-item">
+
+                                    <span class="info-label">
+                                        Age
+                                    </span>
+
+                                    <span class="info-value">
+                                        ${pet.age ?? "Not specified"}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info-item">
+
+                                    <span class="info-label">
+                                        Gender
+                                    </span>
+
+                                    <span class="info-value">
+                                        ${escapeHTML(pet.gender || "Not specified")}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div class="description">
+
+                                ${escapeHTML(
+                                    pet.description ||
+                                    "No description added yet."
+                                )}
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="buttons">
+
+                                <button
+                                    class="edit-btn"
+                                    onclick="editPet(${pet.id})">
+
+                                    ✏️ Edit
+
+                                </button>
+
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="deletePet(${pet.id})">
+
+                                    🗑️ Delete
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }).join("");
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    😢
+                </div>
+
+                <h2>
+                    Unable to Load Pets
+                </h2>
+
+                <p>
+                    Please make sure Spring Boot
+                    is running and try again.
+                </p>
+
+                <button
+                    class="empty-add"
+                    onclick="loadMyPets()">
+
+                    Try Again
+
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   EDIT PET
+   ===================================================== */
+
+function editPet(id) {
+
+    window.location.href =
+        "/add-pet?id=" + id;
+
+}
+
+
+/* =====================================================
+   DELETE PET
+   ===================================================== */
+
+async function deletePet(id) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this pet?"
+        );
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/pets/" + id,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        if (response.ok) {
+
+            alert(
+                "Pet deleted successfully! 🐾"
+            );
+
+            loadMyPets();
+
+        }
+
+        else {
+
+            alert(
+                "Failed to delete pet."
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Cannot connect to server."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SECURITY / HTML ESCAPE
+   ===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   LOAD PAGE
+   ===================================================== */
+
+loadMyPets();
+
+</script>
+<!-- ================= MENU PANEL ================= -->
+
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+<aside class="menu-panel" id="menuPanel">
+
+    <div class="menu-header">
+        <div>
+            <span>PAWHUB</span>
+            <h3>Pet Care Menu</h3>
+        </div>
+
+        <button class="menu-close" onclick="closeMenu()">✕</button>
+    </div>
+
+    <div class="menu-links">
+
+        <a href="/home">🏠 Home</a>
+        <a href="/dashboard">📊 Dashboard</a>
+        <a href="/adoption">🐾 Adoption</a>
+        <a href="/marketplace">🛒 Marketplace</a>
+        <a href="/lost-found">🔍 Lost & Found</a>
+        <a href="/pet-services">🩺 Pet Services</a>
+        <a href="/vaccination">💉 Vaccination</a>
+        <a href="/community">👥 Community</a>
+        <a href="/my-pets" class="active">❤️ My Pets</a>
+        <a href="/my-bookings">📅 My Bookings</a>
+
+    </div>
+
+    <button class="menu-logout" onclick="logoutFromMenu()">
+        ↪ Logout
+    </button>
+
+</aside>
+</body>
+</html>

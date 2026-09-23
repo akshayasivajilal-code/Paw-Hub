@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PAWHUB | Pet Services</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="/style/pet-services.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-paws">
+            🐾
+        </div>
+
+        <div class="brand-text">
+
+            <strong>PAWHUB</strong>
+
+            <small>
+                Pet Care Community
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-icons">
+
+        <!-- WISHLIST -->
+
+        <button
+            class="icon-btn wishlist-nav-btn"
+            type="button"
+            onclick="openWishlist()"
+            title="Wishlist">
+
+            ❤️
+
+        </button>
+
+
+        <!-- CART -->
+
+        <button
+            class="icon-btn cart-nav-btn"
+            type="button"
+            onclick="openCart()"
+            title="Shopping Cart">
+
+            🛒
+
+            <span
+                id="cartCount"
+                class="cart-count">
+
+                0
+
+            </span>
+
+        </button>
+
+
+        <!-- MENU -->
+
+        <button
+            class="icon-btn"
+            type="button"
+            onclick="toggleMenu()"
+            title="Menu">
+
+            ☰
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MENU OVERLAY
+===================================================== -->
+
+<div
+    id="menuOverlay"
+    class="menu-overlay"
+    onclick="closeMenu()">
+</div>
+
+
+
+<!-- =====================================================
+     MENU PANEL
+===================================================== -->
+
+<aside
+    id="menuPanel"
+    class="menu-panel">
+
+    <div class="menu-header">
+
+        <div>
+
+            <span class="menu-label">
+                PAWHUB
+            </span>
+
+            <h3>
+                Pet Care Menu
+            </h3>
+
+        </div>
+
+        <button
+            type="button"
+            class="menu-close"
+            onclick="closeMenu()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div class="menu-links">
+
+        <a href="/home">
+            🏠 Home
+        </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/adoption">
+            🐶 Adoption
+        </a>
+
+        <a href="/marketplace">
+            🛒 Marketplace
+        </a>
+
+        <a href="/lost-found">
+            🔍 Lost &amp; Found
+        </a>
+
+        <a href="/pet-services"
+           class="active">
+
+            🩺 Pet Services
+
+        </a>
+
+        <a href="/vaccination">
+            💉 Vaccination
+        </a>
+
+        <a href="/community">
+            👥 Community
+        </a>
+
+        <a href="/vets">
+            🏥 Vet Finder
+        </a>
+
+        <a href="/my-pets">
+            ❤️ My Pets
+        </a>
+
+        <a href="/my-bookings">
+            📋 My Bookings
+        </a>
+
+    </div>
+
+
+    <button
+        class="menu-logout"
+        type="button"
+        onclick="logoutUser()">
+
+        ↪ Logout
+
+    </button>
+
+</aside>
+
+
+
+<!-- =====================================================
+     QUICK PANEL OVERLAY
+===================================================== -->
+
+<div
+    id="quickPanelOverlay"
+    class="quick-panel-overlay"
+    onclick="closeQuickPanel()">
+</div>
+
+
+
+<!-- =====================================================
+     WISHLIST PANEL
+===================================================== -->
+
+<aside
+    id="wishlistPanel"
+    class="quick-panel wishlist-panel">
+
+
+    <div class="quick-panel-header">
+
+        <div>
+
+            <span class="panel-label">
+                PAWHUB
+            </span>
+
+            <h2>
+                Wishlist ❤️
+            </h2>
+
+        </div>
+
+
+        <button
+            class="panel-close"
+            type="button"
+            onclick="closeQuickPanel()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+
+
+    <!-- WISHLIST TABS -->
+
+    <div class="wishlist-tabs">
+
+        <button
+            class="wishlist-tab active"
+            type="button"
+            onclick="showWishlistTab('pets', this)">
+
+            🐾 Pets
+
+        </button>
+
+
+        <button
+            class="wishlist-tab"
+            type="button"
+            onclick="showWishlistTab('products', this)">
+
+            🛒 Products
+
+        </button>
+
+    </div>
+
+
+
+    <!-- PETS -->
+
+    <div
+        id="wishlistPets"
+        class="wishlist-content active">
+
+        <div
+            id="wishlistPetList"
+            class="wishlist-list">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PRODUCTS -->
+
+    <div
+        id="wishlistProducts"
+        class="wishlist-content">
+
+        <div
+            id="wishlistProductList"
+            class="wishlist-list">
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     CART PANEL
+===================================================== -->
+
+<aside
+    id="cartPanel"
+    class="quick-panel cart-panel">
+
+
+    <div class="quick-panel-header">
+
+        <div>
+
+            <span class="panel-label">
+                PAWHUB
+            </span>
+
+            <h2>
+                Shopping Cart 🛒
+            </h2>
+
+        </div>
+
+
+        <button
+            class="panel-close"
+            type="button"
+            onclick="closeQuickPanel()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+
+
+    <div
+        id="cartList"
+        class="cart-list">
+
+    </div>
+
+
+
+    <div
+        id="cartFooter"
+        class="cart-footer">
+
+        <div class="cart-total-row">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="cartTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button
+            class="checkout-btn"
+            type="button"
+            onclick="goToCheckout()">
+
+            Proceed to Checkout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-label">
+            🐾 PAWHUB CARE
+        </span>
+
+
+        <h1>
+
+            Pet Services
+
+            <span>
+                Made Simple
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Everything your pet needs to stay healthy,
+            happy and cared for.
+
+        </p>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img
+            src="/images/pet-services1.jpg"
+            alt="Pet Services">
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CHOOSE SERVICE
+===================================================== -->
+
+<section class="services-section">
+
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            CHOOSE A SERVICE
+        </span>
+
+        <h2>
+            What does your pet need?
+        </h2>
+
+    </div>
+
+
+
+    <div class="service-grid">
+
+
+        <!-- VETERINARY -->
+
+        <button
+            type="button"
+            class="service-card active"
+            onclick="selectService('Veterinary Care', this)">
+
+            <div class="service-icon service-blue">
+                🩺
+            </div>
+
+            <h3>
+                Veterinary Care
+            </h3>
+
+            <p>
+                Health checkups and professional
+                medical care.
+            </p>
+
+            <span class="service-arrow">
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- GROOMING -->
+
+        <button
+            type="button"
+            class="service-card"
+            onclick="selectService('Pet Grooming', this)">
+
+            <div class="service-icon service-pink">
+                ✂️
+            </div>
+
+            <h3>
+                Pet Grooming
+            </h3>
+
+            <p>
+                Keep your pet clean, fresh and
+                comfortable.
+            </p>
+
+            <span class="service-arrow">
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- TRAINING -->
+
+        <button
+            type="button"
+            class="service-card"
+            onclick="selectService('Pet Training', this)">
+
+            <div class="service-icon service-yellow">
+                🐕
+            </div>
+
+            <h3>
+                Pet Training
+            </h3>
+
+            <p>
+                Build good habits and basic
+                obedience.
+            </p>
+
+            <span class="service-arrow">
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- BOARDING -->
+
+        <button
+            type="button"
+            class="service-card"
+            onclick="selectService('Pet Boarding', this)">
+
+            <div class="service-icon service-green">
+                🏠
+            </div>
+
+            <h3>
+                Pet Boarding
+            </h3>
+
+            <p>
+                A safe and comfortable stay
+                while you're away.
+            </p>
+
+            <span class="service-arrow">
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SELECTED SERVICE
+===================================================== -->
+
+<section class="selected-service-section">
+
+
+    <div class="selected-service">
+
+        <div
+            class="selected-icon"
+            id="selectedServiceIcon">
+
+            🩺
+
+        </div>
+
+
+        <div>
+
+            <span class="section-label">
+                SELECTED SERVICE
+            </span>
+
+            <h2 id="selectedServiceName">
+                Veterinary Care
+            </h2>
+
+            <p id="selectedServiceDescription">
+
+                Get professional veterinary care
+                for your pet, including health
+                checkups and medical support.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <button
+        type="button"
+        class="book-service-btn"
+        onclick="openBooking()">
+
+        📅 Book a Service
+
+        <span>
+            →
+        </span>
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY PAWHUB
+===================================================== -->
+
+<section class="why-section">
+
+
+    <div class="why-heading">
+
+        <span class="section-label">
+            WHY PAWHUB
+        </span>
+
+        <h2>
+            Care your pet can count on ❤️
+        </h2>
+
+        <p>
+            Simple, reliable and pet-friendly
+            services in one place.
+        </p>
+
+    </div>
+
+
+
+    <div class="why-grid">
+
+
+        <div class="why-card">
+
+            <div class="why-icon blue">
+                🩺
+            </div>
+
+            <h3>
+                Trusted Care
+            </h3>
+
+            <p>
+                Find professional services
+                for your furry friend.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div class="why-icon pink">
+                ❤️
+            </div>
+
+            <h3>
+                Pet First
+            </h3>
+
+            <p>
+                Every service is designed
+                around your pet's comfort.
+            </p>
+
+        </div>
+
+
+
+        <div class="why-card">
+
+            <div class="why-icon green">
+                📅
+            </div>
+
+            <h3>
+                Easy Booking
+            </h3>
+
+            <p>
+                Book and manage appointments
+                without any hassle.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     BOOKING MODAL
+===================================================== -->
+
+<div
+    id="bookingModal"
+    class="booking-modal">
+
+
+    <div
+        class="booking-backdrop"
+        onclick="closeBooking()">
+    </div>
+
+
+    <div class="booking-box">
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="booking-close"
+            onclick="closeBooking()">
+
+            ×
+
+        </button>
+
+
+        <!-- ICON -->
+
+        <div class="booking-icon">
+            🩺
+        </div>
+
+
+        <span class="section-label">
+            PAWHUB SERVICES
+        </span>
+
+
+        <h2>
+            Book Appointment
+        </h2>
+
+
+        <p class="booking-subtitle">
+
+            Book your pet's service appointment.
+
+        </p>
+
+
+        <!-- SELECTED SERVICE -->
+
+        <div class="selected-clinic-box">
+
+            <span>
+                Selected Service
+            </span>
+
+            <strong id="bookingSelectedService">
+                Veterinary Care
+            </strong>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <form id="bookingForm">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="userName">
+                    Your Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="userName"
+                    placeholder="Enter your name"
+                    required>
+
+            </div>
+
+
+
+            <!-- PET NAME -->
+
+            <div class="form-group">
+
+                <label for="petName">
+                    Pet Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="petName"
+                    placeholder="Enter your pet's name"
+                    required>
+
+            </div>
+
+
+
+            <!-- SERVICE -->
+
+            <div class="form-group">
+
+                <label for="service">
+                    Service *
+                </label>
+
+                <select
+                    id="service"
+                    required>
+
+                    <option value="">
+                        Select Service
+                    </option>
+
+                    <option value="Veterinary Care">
+                        Veterinary Care
+                    </option>
+
+                    <option value="Pet Grooming">
+                        Pet Grooming
+                    </option>
+
+                    <option value="Pet Training">
+                        Pet Training
+                    </option>
+
+                    <option value="Pet Boarding">
+                        Pet Boarding
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- DATE -->
+
+            <div class="form-group">
+
+                <label for="serviceDate">
+                    Appointment Date *
+                </label>
+
+                <input
+                    type="date"
+                    id="serviceDate"
+                    required>
+
+            </div>
+
+
+
+            <!-- TIME -->
+
+            <div class="form-group">
+
+                <label for="serviceTime">
+                    Appointment Time *
+                </label>
+
+                <input
+                    type="time"
+                    id="serviceTime"
+                    required>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number *
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    required>
+
+            </div>
+
+
+
+            <!-- NOTE -->
+
+            <div class="form-group full">
+
+                <label for="note">
+                    Additional Note
+                </label>
+
+                <textarea
+                    id="note"
+                    rows="3"
+                    placeholder="Any special request or note..."></textarea>
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="booking-actions">
+
+                <button
+                    type="button"
+                    class="cancel-booking-btn"
+                    onclick="closeBooking()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="confirm-booking-btn">
+
+                    Confirm Appointment 🐾
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                🐾
+            </div>
+
+            <div>
+
+                <h3>
+                    PAWHUB
+                </h3>
+
+                <p>
+                    Pet Care Community
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-message">
+
+            <strong>
+                Caring for Every Paw ❤️
+            </strong>
+
+            <span>
+                Making pet care simple,
+                trusted and accessible.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 PAWHUB. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   PAWHUB PET SERVICES
+   BOOKING SCRIPT
+===================================================== */
+
+
+/* =====================================================
+   GET LOGGED-IN USER
+===================================================== */
+
+function getLoggedInUser() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("loggedInUser") || "null"
+        );
+
+    } catch (error) {
+
+        console.error("User data error:", error);
+
+        return null;
+    }
+}
+
+
+/* =====================================================
+   GET USER ID
+===================================================== */
+
+function getLoggedInUserId() {
+
+    const user = getLoggedInUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return user.id || null;
+}
+
+
+/* =====================================================
+   OPEN BOOKING MODAL
+===================================================== */
+
+function openBooking(serviceName) {
+
+    const modal =
+        document.getElementById("bookingModal");
+
+    if (!modal) {
+
+        console.error("bookingModal not found");
+
+        return;
+    }
+
+
+    /* LOGIN CHECK */
+
+    const loggedInUser =
+        getLoggedInUser();
+
+    if (!loggedInUser || !loggedInUser.id) {
+
+        alert(
+            "Please login before booking an appointment. 🐾"
+        );
+
+        window.location.href = "/login";
+
+        return;
+    }
+
+
+    /* SET SERVICE */
+
+    const serviceSelect =
+        document.getElementById("service");
+
+    if (serviceSelect && serviceName) {
+
+        serviceSelect.value = serviceName;
+    }
+
+
+    /* SET USER NAME */
+
+    const userNameInput =
+        document.getElementById("userName");
+
+    if (
+        userNameInput &&
+        loggedInUser.name
+    ) {
+
+        userNameInput.value =
+            loggedInUser.name;
+    }
+
+
+    /* SHOW MODAL */
+
+    modal.classList.add("show");
+
+    document.body.classList.add("modal-open");
+}
+
+
+/* =====================================================
+   CLOSE BOOKING MODAL
+===================================================== */
+
+function closeBookingForm() {
+
+    const modal =
+        document.getElementById("bookingModal");
+
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.remove("show");
+
+    document.body.classList.remove("modal-open");
+}
+
+
+/* =====================================================
+   BOOKING SUBMIT
+===================================================== */
+
+async function submitBooking(event) {
+
+    event.preventDefault();
+
+
+    /* ================================================
+       GET LOGGED-IN USER
+    ================================================ */
+
+    const loggedInUser =
+        getLoggedInUser();
+
+
+    /* ================================================
+       LOGIN CHECK
+    ================================================ */
+
+    if (
+        !loggedInUser ||
+        !loggedInUser.id
+    ) {
+
+        alert(
+            "Please login before booking an appointment. 🐾"
+        );
+
+        window.location.href = "/login";
+
+        return;
+    }
+
+
+    /* ================================================
+       GET FORM VALUES
+    ================================================ */
+
+    const userName =
+        document
+            .getElementById("userName")
+            .value
+            .trim();
+
+
+    const petName =
+        document
+            .getElementById("petName")
+            .value
+            .trim();
+
+
+    const service =
+        document
+            .getElementById("service")
+            .value;
+
+
+    const serviceDate =
+        document
+            .getElementById("serviceDate")
+            .value;
+
+
+    const serviceTime =
+        document
+            .getElementById("serviceTime")
+            .value;
+
+
+    const phone =
+        document
+            .getElementById("phone")
+            .value
+            .trim();
+
+
+    const note =
+        document
+            .getElementById("note")
+            .value
+            .trim();
+
+
+    /* ================================================
+       VALIDATION
+    ================================================ */
+
+    if (
+        !userName ||
+        !petName ||
+        !service ||
+        !serviceDate ||
+        !serviceTime ||
+        !phone
+    ) {
+
+        alert(
+            "Please fill all required details. 🐾"
+        );
+
+        return;
+    }
+
+
+    /* ================================================
+       BOOKING OBJECT
+       IMPORTANT: userId included
+    ================================================ */
+
+    const booking = {
+
+        userId: loggedInUser.id,
+
+        userName: userName,
+
+        petName: petName,
+
+        service: service,
+
+        serviceDate: serviceDate,
+
+        serviceTime: serviceTime,
+
+        phone: phone,
+
+        note: note
+    };
+
+
+    console.log(
+        "PAWHUB BOOKING:",
+        booking
+    );
+
+
+    /* ================================================
+       SUBMIT BUTTON
+    ================================================ */
+
+    const submitButton =
+        document.querySelector(
+            ".confirm-booking-btn"
+        );
+
+
+    if (submitButton) {
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Booking... 🐾";
+    }
+
+
+    /* ================================================
+       SEND TO BACKEND
+    ================================================ */
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/bookings",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(booking)
+                }
+            );
+
+
+        /* ============================================
+           BACKEND ERROR
+        ============================================ */
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            console.error(
+                "Booking API error:",
+                errorText
+            );
+
+            throw new Error(
+                "Booking failed: " +
+                response.status
+            );
+        }
+
+
+        /* ============================================
+           SAVED BOOKING
+        ============================================ */
+
+        const savedBooking =
+            await response.json();
+
+
+        console.log(
+            "BOOKING SAVED:",
+            savedBooking
+        );
+
+
+        /* ============================================
+           SUCCESS
+        ============================================ */
+
+        alert(
+            "✅ Appointment booked successfully! 🐾"
+        );
+
+
+        /* ============================================
+           RESET FORM
+        ============================================ */
+
+        const form =
+            document.getElementById(
+                "bookingForm"
+            );
+
+        if (form) {
+
+            form.reset();
+        }
+
+
+        /* ============================================
+           CLOSE MODAL
+        ============================================ */
+
+        closeBookingForm();
+
+
+        /* ============================================
+           GO TO MY BOOKINGS
+        ============================================ */
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "/my-bookings";
+
+            },
+            300
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Booking error:",
+            error
+        );
+
+        alert(
+            "❌ Unable to book appointment. Please try again."
+        );
+    }
+
+    finally {
+
+        if (submitButton) {
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "Confirm Appointment 🐾";
+        }
+    }
+}
+
+
+/* =====================================================
+   SERVICE CARD CLICK
+===================================================== */
+
+function openService(serviceName) {
+
+    const loggedInUser =
+        getLoggedInUser();
+
+
+    if (
+        !loggedInUser ||
+        !loggedInUser.id
+    ) {
+
+        alert(
+            "Please login before booking an appointment. 🐾"
+        );
+
+        window.location.href = "/login";
+
+        return;
+    }
+
+
+    openBooking(serviceName);
+}
+
+
+/* =====================================================
+   DOM READY
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const form =
+            document.getElementById(
+                "bookingForm"
+            );
+
+
+        if (form) {
+
+            form.addEventListener(
+                "submit",
+                submitBooking
+            );
+        }
+
+
+        /* ============================================
+           MODAL BACKDROP
+        ============================================ */
+
+        const modal =
+            document.getElementById(
+                "bookingModal"
+            );
+
+
+        if (modal) {
+
+            modal.addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === modal
+                    ) {
+
+                        closeBookingForm();
+                    }
+
+                }
+            );
+        }
+
+
+        /* ============================================
+           ESC KEY
+        ============================================ */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeBookingForm();
+                }
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

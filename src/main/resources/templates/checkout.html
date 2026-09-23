@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PAWHUB | Checkout</title>
+
+    <link rel="stylesheet" href="/style/checkout.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-paws">
+            🐾
+        </div>
+
+        <div class="brand-text">
+
+            <strong>PAWHUB</strong>
+
+            <small>
+                Pet Care Community
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<main class="checkout-page">
+
+
+    <div class="checkout-header">
+
+        <h1>
+            Checkout
+        </h1>
+
+        <p>
+            Complete your order for your pet ❤️
+        </p>
+
+    </div>
+
+
+
+    <div class="checkout-layout">
+
+
+        <!-- ================= ORDER SUMMARY ================= -->
+
+        <section class="checkout-card">
+
+            <h2>
+                🛒 Order Summary
+            </h2>
+
+            <div id="checkoutItems"></div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="checkoutTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DELIVERY DETAILS ================= -->
+
+        <section class="checkout-card">
+
+            <h2>
+                📦 Delivery Details
+            </h2>
+
+
+            <form id="checkoutForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter phone number"
+                        required>
+
+                </div>
+
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        placeholder="Enter delivery address"
+                        required></textarea>
+
+                </div>
+
+
+
+                <!-- PAYMENT METHOD -->
+
+                <div class="form-group">
+
+                    <label for="payment">
+                        Payment Method
+                    </label>
+
+                    <select id="payment">
+
+                        <option value="COD">
+                            Cash on Delivery
+                        </option>
+
+                        <option value="ONLINE">
+                            Online Payment
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ================= UPI SECTION ================= -->
+
+                <div
+                    id="upiSection"
+                    class="upi-section"
+                    style="display: none;">
+
+
+                    <div class="upi-title">
+
+                        <div>
+
+                            <strong>
+                                💳 Pay with UPI
+                            </strong>
+
+                            <span>
+                                Fast & secure payment
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT APPS -->
+
+                    <p class="upi-label">
+                        Choose Payment App
+                    </p>
+
+
+                    <div class="upi-apps">
+
+
+                        <label class="upi-app">
+
+                            <input
+                                type="radio"
+                                name="upiApp"
+                                value="Google Pay">
+
+                            <span>
+                                🟢 Google Pay
+                            </span>
+
+                        </label>
+
+
+
+                        <label class="upi-app">
+
+                            <input
+                                type="radio"
+                                name="upiApp"
+                                value="PhonePe">
+
+                            <span>
+                                🟣 PhonePe
+                            </span>
+
+                        </label>
+
+
+
+                        <label class="upi-app">
+
+                            <input
+                                type="radio"
+                                name="upiApp"
+                                value="Paytm">
+
+                            <span>
+                                🔵 Paytm
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+
+
+                    <!-- OR -->
+
+                    <div class="upi-divider">
+                        OR
+                    </div>
+
+
+
+                    <!-- UPI ID -->
+
+                    <label
+                        for="upiId"
+                        class="upi-label">
+
+                        Enter UPI ID
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="upiId"
+                        class="upi-input"
+                        placeholder="example@upi">
+
+
+
+                    <!-- CONTINUE -->
+
+					<button
+					    type="button"
+					    id="payNowBtn"
+					    class="pay-now-btn"
+					    onclick="startUPIPayment()">
+
+					    Continue to Pay ₹0
+
+					</button>
+
+
+
+                    <p class="upi-note">
+
+                        🔒 Demo payment interface — no real money will be charged.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- ================= COD BUTTON ================= -->
+
+                <button
+                    type="submit"
+                    id="placeOrderBtn"
+                    class="place-order-btn">
+
+                    Place Order 🐾
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+	 <script>
+
+	 function getCart() {
+	     try {
+	         return JSON.parse(localStorage.getItem("pawhubCart") || "[]");
+	     } catch (e) {
+	         return [];
+	     }
+	 }
+
+	 function getCartTotal() {
+	     return getCart().reduce(function(total, item) {
+	         return total +
+	             (Number(item.price) || 0) *
+	             (Number(item.quantity) || 1);
+	     }, 0);
+	 }
+
+
+	 /* =========================
+	    LOAD CHECKOUT
+	 ========================= */
+
+	 function loadCheckout() {
+
+	     const cart = getCart();
+	     const container = document.getElementById("checkoutItems");
+	     const totalElement = document.getElementById("checkoutTotal");
+	     const payButton = document.getElementById("payNowBtn");
+
+	     if (!cart.length) {
+	         container.innerHTML = `
+	             <div class="empty">
+	                 🛒 Your cart is empty.
+	             </div>
+	         `;
+
+	         totalElement.textContent = "₹0";
+
+	         if (payButton) {
+	             payButton.textContent = "Continue to Pay ₹0";
+	         }
+
+	         return;
+	     }
+
+	     let total = 0;
+
+	     container.innerHTML = cart.map(function(item) {
+
+	         const price = Number(item.price) || 0;
+	         const quantity = Number(item.quantity) || 1;
+
+	         total += price * quantity;
+
+	         return `
+	             <div class="checkout-item">
+
+	                 <img
+	                     src="${item.image}"
+	                     alt="${item.name}">
+
+	                 <div class="item-info">
+
+	                     <h3>${item.name}</h3>
+
+	                     <p>
+	                         ₹${price} × ${quantity}
+	                     </p>
+
+	                 </div>
+
+	                 <strong>
+	                     ₹${price * quantity}
+	                 </strong>
+
+	             </div>
+	         `;
+
+	     }).join("");
+
+	     totalElement.textContent =
+	         "₹" + total.toLocaleString("en-IN");
+
+	     if (payButton) {
+	         payButton.textContent =
+	             "Continue to Pay ₹" +
+	             total.toLocaleString("en-IN");
+	     }
+	 }
+
+
+	 /* =========================
+	    PAYMENT METHOD
+	 ========================= */
+
+	 const paymentSelect =
+	     document.getElementById("payment");
+
+	 const upiSection =
+	     document.getElementById("upiSection");
+
+	 const placeOrderBtn =
+	     document.getElementById("placeOrderBtn");
+
+
+	 paymentSelect.addEventListener("change", function() {
+
+	     if (this.value === "ONLINE") {
+
+	         upiSection.style.display = "block";
+	         placeOrderBtn.style.display = "none";
+
+	     } else {
+
+	         upiSection.style.display = "none";
+	         placeOrderBtn.style.display = "block";
+	     }
+
+	 });
+
+
+	 /* =========================
+	    CONTINUE TO PAY
+	 ========================= */
+
+	 function startUPIPayment() {
+
+	     const selectedApp =
+	         document.querySelector(
+	             'input[name="upiApp"]:checked'
+	         );
+
+	     const upiInput =
+	         document.getElementById("upiId");
+
+	     const upiId =
+	         upiInput ? upiInput.value.trim() : "";
+
+
+	     if (!selectedApp && !upiId) {
+
+	         alert(
+	             "Please choose Google Pay, PhonePe, Paytm or enter your UPI ID."
+	         );
+
+	         return;
+	     }
+
+
+	     if (
+	         upiId &&
+	         !/^[\w.-]+@[\w.-]+$/.test(upiId)
+	     ) {
+
+	         alert("Please enter a valid UPI ID.");
+
+	         return;
+	     }
+
+
+	     const paymentApp =
+	         selectedApp
+	             ? selectedApp.value
+	             : "UPI";
+
+
+	     const amount = getCartTotal();
+
+
+	     showPaymentModal(
+	         paymentApp,
+	         amount,
+	         upiId
+	     );
+	 }
+
+
+	 /* =========================
+	    PAYMENT MODAL
+	 ========================= */
+
+	 function showPaymentModal(
+	     paymentApp,
+	     amount,
+	     upiId
+	 ) {
+
+	     const old =
+	         document.getElementById("paymentModal");
+
+	     if (old) {
+	         old.remove();
+	     }
+
+
+	     const modal =
+	         document.createElement("div");
+
+	     modal.id = "paymentModal";
+
+
+	     modal.innerHTML = `
+
+	         <div class="payment-modal-overlay">
+
+	             <div class="payment-modal-box">
+
+	                 <button
+	                     type="button"
+	                     class="payment-close"
+	                     onclick="closePaymentModal()">
+	                     ×
+	                 </button>
+
+
+	                 <div class="payment-icon">
+	                     💳
+	                 </div>
+
+
+	                 <h2>
+	                     Confirm Payment
+	                 </h2>
+
+
+	                 <p class="payment-subtitle">
+	                     Pay securely using ${paymentApp}
+	                 </p>
+
+
+	                 <div class="payment-amount">
+
+	                     <span>
+	                         Amount to Pay
+	                     </span>
+
+	                     <strong>
+	                         ₹${amount.toLocaleString("en-IN")}
+	                     </strong>
+
+	                 </div>
+
+
+	                 <div class="payment-details">
+
+	                     <div>
+	                         <span>
+	                             Payment Method
+	                         </span>
+
+	                         <strong>
+	                             ${paymentApp}
+	                         </strong>
+	                     </div>
+
+
+	                     ${
+	                         upiId
+	                         ? `
+	                         <div>
+	                             <span>UPI ID</span>
+	                             <strong>${upiId}</strong>
+	                         </div>
+	                         `
+	                         : ""
+	                     }
+
+	                 </div>
+
+
+	                 <div class="payment-warning">
+
+	                     🔒 Demo payment screen.
+	                     No real money will be charged.
+
+	                 </div>
+
+
+	                 <button
+	                     type="button"
+	                     class="confirm-payment-btn"
+	                     onclick="confirmPayment()">
+
+	                     ✓ Confirm Payment
+
+	                 </button>
+
+
+	                 <button
+	                     type="button"
+	                     class="cancel-payment-btn"
+	                     onclick="closePaymentModal()">
+
+	                     Cancel
+
+	                 </button>
+
+	             </div>
+
+	         </div>
+	     `;
+
+
+	     document.body.appendChild(modal);
+	 }
+
+
+	 /* =========================
+	    CLOSE MODAL
+	 ========================= */
+
+	 function closePaymentModal() {
+
+	     const modal =
+	         document.getElementById("paymentModal");
+
+	     if (modal) {
+	         modal.remove();
+	     }
+	 }
+
+
+	 /* =========================
+	    CONFIRM PAYMENT
+	 ========================= */
+
+	 function confirmPayment() {
+
+	     const button =
+	         document.querySelector(
+	             ".confirm-payment-btn"
+	         );
+
+	     button.disabled = true;
+
+	     button.textContent =
+	         "Processing Payment...";
+
+
+	     setTimeout(function() {
+
+	         completeOnlineOrder();
+
+	     }, 1000);
+	 }
+
+
+	 /* =========================
+	    COMPLETE ONLINE ORDER
+	 ========================= */
+
+	 function completeOnlineOrder() {
+
+	     const cart = getCart();
+
+	     if (!cart.length) {
+
+	         alert("Your cart is empty.");
+
+	         return;
+	     }
+
+
+	     const selectedApp =
+	         document.querySelector(
+	             'input[name="upiApp"]:checked'
+	         );
+
+
+	     const upiInput =
+	         document.getElementById("upiId");
+
+
+	     const paymentApp =
+	         selectedApp
+	             ? selectedApp.value
+	             : "UPI";
+
+
+	     const upiId =
+	         upiInput
+	             ? upiInput.value.trim()
+	             : "";
+
+
+	     localStorage.setItem(
+	         "pawhubLastOrder",
+	         JSON.stringify({
+
+	             items: cart,
+
+	             customerName:
+	                 document.getElementById("name").value,
+
+	             phone:
+	                 document.getElementById("phone").value,
+
+	             address:
+	                 document.getElementById("address").value,
+
+	             payment:
+	                 "Online Payment",
+
+	             paymentApp:
+	                 paymentApp,
+
+	             upiId:
+	                 upiId,
+
+	             paymentStatus:
+	                 "PAID",
+
+	             orderDate:
+	                 new Date().toISOString()
+
+	         })
+	     );
+
+
+	     localStorage.removeItem("pawhubCart");
+
+
+	     window.location.href =
+	         "/order-success";
+	 }
+
+
+	 /* =========================
+	    COD
+	 ========================= */
+
+	 document
+	     .getElementById("checkoutForm")
+	     .addEventListener("submit", function(event) {
+
+	         event.preventDefault();
+
+
+	         if (paymentSelect.value !== "COD") {
+	             return;
+	         }
+
+
+	         const cart = getCart();
+
+	         if (!cart.length) {
+
+	             alert("Your cart is empty.");
+
+	             return;
+	         }
+
+
+	         localStorage.setItem(
+	             "pawhubLastOrder",
+	             JSON.stringify({
+
+	                 items: cart,
+
+	                 customerName:
+	                     document.getElementById("name").value,
+
+	                 phone:
+	                     document.getElementById("phone").value,
+
+	                 address:
+	                     document.getElementById("address").value,
+
+	                 payment:
+	                     "Cash on Delivery",
+
+	                 paymentStatus:
+	                     "PENDING",
+
+	                 orderDate:
+	                     new Date().toISOString()
+
+	             })
+	         );
+
+
+	         localStorage.removeItem("pawhubCart");
+
+
+	         window.location.href =
+	             "/order-success";
+
+	     });
+
+
+	 /* =========================
+	    START
+	 ========================= */
+
+	 loadCheckout();
+
+	 </script>
+
+</body>
+</html>

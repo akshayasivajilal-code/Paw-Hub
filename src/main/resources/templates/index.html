@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PAWHUB</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+
+<body>
+
+    <!-- Splash Screen -->
+    <section class="splash-screen">
+
+        <div class="logo-box">
+
+            <!-- Paw Logo -->
+            <img src="/images/logo1.png" class="paw-logo" alt="PAWHUB Logo">
+
+            <!-- Website Name -->
+            <h1>PAWHUB</h1>
+
+            <!-- Tagline -->
+            <p>Every Paw Deserves a Loving Home</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- JavaScript -->
+	<script>
+
+	    window.addEventListener("load", () => {
+
+	        const splash =
+	            document.querySelector(".splash-screen");
+
+	        setTimeout(() => {
+
+	            splash.style.opacity = "0";
+	            splash.style.transform = "scale(1.05)";
+	            splash.style.transition = "all 0.8s ease";
+
+	        }, 1800);
+
+
+	        setTimeout(() => {
+
+	            window.location.href = "/home";
+
+	        }, 2600);
+
+	    });
+
+
+	    document.addEventListener("keydown", (event) => {
+
+	        if (event.key === "Enter") {
+
+	            window.location.href = "/home";
+
+	        }
+
+	    });
+
+
+	    document.addEventListener("click", () => {
+
+	        window.location.href = "/home";
+
+	    });
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PAWHUB | Register</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Outfit:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: 'Outfit', sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(191, 219, 254, 0.55),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(254, 240, 138, 0.35),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ffffff 50%,
+                    #fefce8
+                );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        /* Decorative paws */
+
+        .paw {
+            position: absolute;
+
+            font-size: 65px;
+
+            opacity: 0.10;
+
+            user-select: none;
+
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .paw1 {
+            top: 8%;
+            left: 8%;
+        }
+
+        .paw2 {
+            bottom: 8%;
+            right: 8%;
+
+            animation-delay: 1.5s;
+        }
+
+        .paw3 {
+            top: 18%;
+            right: 13%;
+
+            font-size: 42px;
+
+            animation-delay: 0.8s;
+        }
+
+
+        @keyframes float {
+
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-8deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(8deg);
+            }
+        }
+
+
+        /* Main card */
+
+        .register-wrapper {
+
+            width: 920px;
+            max-width: 92%;
+
+            min-height: 590px;
+
+            display: grid;
+
+            grid-template-columns: 0.95fr 1.05fr;
+
+            background:
+                rgba(255, 255, 255, 0.90);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.9);
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px
+                rgba(30, 64, 175, 0.15);
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        /* Left side */
+
+        .register-brand {
+
+            padding: 50px 42px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dbeafe,
+                    #eff6ff 55%,
+                    #fef9c3
+                );
+        }
+
+
+        .register-brand::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 270px;
+            height: 270px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.45);
+
+            top: -110px;
+            right: -100px;
+        }
+
+
+        .register-brand::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(147,197,253,0.25);
+
+            bottom: -80px;
+            left: -60px;
+        }
+
+
+        .brand-logo {
+
+            width: 85px;
+            height: 85px;
+
+            object-fit: contain;
+
+            margin-bottom: 20px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .register-brand h1 {
+
+            margin: 0 0 15px;
+
+            font-family: 'Sora', sans-serif;
+
+            font-size: 40px;
+
+            line-height: 1.15;
+
+            color: #172554;
+        }
+
+
+        .register-brand h1 span {
+            color: #2563eb;
+        }
+
+
+        .register-brand p {
+
+            max-width: 340px;
+
+            margin: 0;
+
+            color: #526581;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .brand-tag {
+
+            width: fit-content;
+
+            margin-top: 28px;
+
+            padding: 9px 16px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.75);
+
+            color: #2563eb;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* Right side */
+
+        .register-section {
+
+            padding: 42px 52px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .register-section h2 {
+
+            margin: 0 0 7px;
+
+            font-family: 'Sora', sans-serif;
+
+            font-size: 29px;
+
+            color: #172554;
+        }
+
+
+        .register-subtitle {
+
+            margin: 0 0 24px;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* Input grid */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        .input-group {
+
+            margin-bottom: 1px;
+        }
+
+
+        .input-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #334155;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .input-box {
+            position: relative;
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 16px;
+
+            opacity: 0.72;
+
+            pointer-events: none;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 47px;
+
+            padding:
+                0 13px 0 42px;
+
+            border:
+                1.5px solid #dbe4f0;
+
+            border-radius: 12px;
+
+            background: #f8fafc;
+
+            color: #172554;
+
+            font-family: 'Outfit', sans-serif;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: all 0.25s ease;
+        }
+
+
+        input:focus {
+
+            border-color: #3b82f6;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(59,130,246,0.10);
+        }
+
+
+        input::placeholder {
+            color: #94a3b8;
+        }
+
+
+        /* Create account button */
+
+        .register-btn {
+
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 21px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
+            color: white;
+
+            font-family: 'Outfit', sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.25);
+
+            transition: all 0.3s ease;
+        }
+
+
+        .register-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(37,99,235,0.32);
+        }
+
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* Message */
+
+        #message {
+
+            min-height: 20px;
+
+            margin: 12px 0 0;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        /* Login link */
+
+        .login-text {
+
+            margin: 18px 0 0;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        .login-text a {
+
+            color: #2563eb;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Tablet / mobile */
+
+        @media (max-width: 760px) {
+
+            body {
+                padding: 25px 0;
+            }
+
+
+            .register-wrapper {
+
+                width: 470px;
+
+                min-height: auto;
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .register-brand {
+
+                padding:
+                    35px 30px;
+
+                text-align: center;
+
+                align-items: center;
+            }
+
+
+            .brand-logo {
+
+                width: 70px;
+                height: 70px;
+            }
+
+
+            .register-brand h1 {
+                font-size: 32px;
+            }
+
+
+            .register-brand p {
+                font-size: 15px;
+            }
+
+
+            .register-section {
+                padding:
+                    38px 30px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .register-wrapper {
+                max-width: 94%;
+            }
+
+
+            .register-brand {
+                padding:
+                    30px 20px;
+            }
+
+
+            .register-section {
+                padding:
+                    30px 20px;
+            }
+
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .input-group.full {
+                grid-column: auto;
+            }
+
+
+            .register-brand h1 {
+                font-size: 28px;
+            }
+
+
+            .register-section h2 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Decorative paws -->
+
+    <div class="paw paw1">🐾</div>
+
+    <div class="paw paw2">🐾</div>
+
+    <div class="paw paw3">🐾</div>
+
+
+    <div class="register-wrapper">
+
+
+        <!-- Branding -->
+
+        <div class="register-brand">
+
+            <img
+                src="/images/logo2.png"
+                alt="PAWHUB Logo"
+                class="brand-logo"
+            >
+
+
+            <h1>
+                Join<br>
+                <span>PAWHUB</span>
+            </h1>
+
+
+            <p>
+                Create your PawHub account and become
+                part of a community that cares about
+                every pet, every home, and every paw.
+            </p>
+
+
+            <div class="brand-tag">
+                🐾 Every Paw Matters
+            </div>
+
+        </div>
+
+
+        <!-- Registration form -->
+
+        <div class="register-section">
+
+            <h2>
+                Create Your Account 🐾
+            </h2>
+
+
+            <p class="register-subtitle">
+                Join PawHub and start your journey today.
+            </p>
+
+
+            <div class="form-grid">
+
+
+                <!-- Name -->
+
+                <div class="input-group full">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">👤</span>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">✉️</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="input-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">📱</span>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="Phone number"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">🔒</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a password"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="input-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">📍</span>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Your location"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="register-btn"
+                onclick="registerUser()">
+
+                Create PAWHUB Account →
+
+            </button>
+
+
+            <p id="message"></p>
+
+
+            <p class="login-text">
+
+                Already have an account?
+
+                <a href="/login">
+                    Login here
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function registerUser() {
+
+            const user = {
+
+                name:
+                    document.getElementById("name").value,
+
+                email:
+                    document.getElementById("email").value,
+
+                password:
+                    document.getElementById("password").value,
+
+                phone:
+                    document.getElementById("phone").value,
+
+                location:
+                    document.getElementById("location").value
+
+            };
+
+
+            fetch("/api/users/register", {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body: JSON.stringify(user)
+
+            })
+
+            .then(response => {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Registration failed"
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+            .then(data => {
+
+                document.getElementById("message").innerText =
+                    "Account created successfully! 🐾";
+
+                console.log(data);
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("message").innerText =
+                    "Registration failed. Try another email.";
+
+                console.error(error);
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

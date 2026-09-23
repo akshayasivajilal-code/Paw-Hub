@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Bookings | PAWHUB</title>
+
+    <link rel="stylesheet"
+          href="/style/my-bookings.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Outfit", sans-serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef6ff 0%,
+                    #ffffff 48%,
+                    #fffbea 100%
+                );
+            color: #172554;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 76px;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #e5edf8;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            box-shadow:
+                0 4px 18px
+                rgba(37, 88, 249, 0.05);
+
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .logo-paws {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #5b82ff
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, .20);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-text strong {
+            font-family: "Sora", sans-serif;
+            font-size: 16px;
+            color: #172554;
+        }
+
+        .brand-text small {
+            color: #8a98ad;
+            font-size: 8px;
+            margin-top: 5px;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .icon-btn {
+            width: 39px;
+            height: 39px;
+
+            border: 1px solid #e3eaf5;
+            border-radius: 12px;
+
+            background: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            transition: .25s ease;
+        }
+
+        .icon-btn:hover {
+            background: #f1f6ff;
+            border-color: #c9d8ff;
+            transform: translateY(-2px);
+        }
+
+        .wishlist-nav-btn {
+            color: #ef4444;
+        }
+
+        .wishlist-nav-btn:hover {
+            background: #fff1f2;
+            border-color: #fecdd3;
+        }
+
+        /* ================= MENU ================= */
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+
+            background:
+                rgba(15, 23, 42, .35);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: .25s ease;
+
+            z-index: 1998;
+        }
+
+        .menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-panel {
+            position: fixed;
+
+            top: 0;
+            right: -360px;
+
+            width: 340px;
+            height: 100vh;
+
+            background: #ffffff;
+
+            box-shadow:
+                -20px 0 60px
+                rgba(15, 23, 42, .18);
+
+            z-index: 1999;
+
+            padding: 28px 22px;
+
+            transition: right .3s ease;
+
+            overflow-y: auto;
+        }
+
+        .menu-panel.show {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 24px;
+        }
+
+        .menu-header h2 {
+            font-family: "Sora", sans-serif;
+            font-size: 19px;
+            margin: 0;
+            color: #172554;
+        }
+
+        .menu-close {
+            width: 36px;
+            height: 36px;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+
+            background: white;
+
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .menu-link {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 13px 14px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: transparent;
+
+            color: #334155;
+
+            font-family: "Outfit", sans-serif;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            margin-bottom: 5px;
+        }
+
+        .menu-link:hover {
+            background: #f1f6ff;
+            color: #2563eb;
+        }
+
+        .menu-link.active {
+            background: #edf4ff;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: #e8eef6;
+            margin: 15px 0;
+        }
+
+        /* ================= MAIN ================= */
+
+        .page {
+            width: 100%;
+            min-height: calc(100vh - 76px);
+
+            padding: 55px 6% 80px;
+        }
+
+        .page-inner {
+            width: min(1100px, 100%);
+            margin: auto;
+        }
+
+        /* ================= HEADING ================= */
+
+        .page-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 35px;
+        }
+
+        .heading-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .heading-icon {
+            width: 76px;
+            height: 76px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e5f0ff,
+                    #fff7d9
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(37, 99, 235, .08);
+        }
+
+        .eyebrow {
+            color: #2563eb;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+
+            font-family: "Sora", sans-serif;
+
+            font-size: 38px;
+
+            color: #172554;
+        }
+
+        .page-heading h1 span {
+            color: #2563eb;
+        }
+
+        .page-heading p {
+            margin: 8px 0 0;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .book-btn {
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f7cff
+                );
+
+            color: white;
+
+            padding: 14px 20px;
+
+            border-radius: 13px;
+
+            font-family: "Outfit", sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 25px
+                rgba(37, 99, 235, .20);
+
+            transition: .25s ease;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ================= BOOKINGS CARD ================= */
+
+        .bookings-wrapper {
+            background: white;
+
+            border: 1px solid #e1e9f4;
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(37, 99, 235, .07);
+        }
+
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .section-top h2 {
+            margin: 0;
+
+            font-family: "Sora", sans-serif;
+
+            font-size: 21px;
+
+            color: #172554;
+        }
+
+        .section-top p {
+            margin: 6px 0 0;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+        /* ================= STATES ================= */
+
+        .state-box {
+            min-height: 350px;
+
+            border: 1px dashed #cbdcf5;
+
+            border-radius: 20px;
+
+            background: #f8fbff;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 35px;
+        }
+
+        .state-icon {
+            width: 70px;
+            height: 70px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8f2ff,
+                    #fff5cf
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 34px;
+
+            margin-bottom: 18px;
+        }
+
+        .state-box h3 {
+            margin: 0 0 8px;
+
+            font-family: "Sora", sans-serif;
+
+            font-size: 20px;
+
+            color: #172554;
+        }
+
+        .state-box p {
+            margin: 0 0 20px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        .state-box button {
+            border: none;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            font-family: "Outfit", sans-serif;
+
+            font-weight: 600;
+        }
+
+        /* ================= LOADING ================= */
+
+        .loading-spinner {
+            width: 38px;
+            height: 38px;
+
+            border: 4px solid #dbe7ff;
+
+            border-top-color: #2563eb;
+
+            border-radius: 50%;
+
+            animation: spin .8s linear infinite;
+
+            margin-bottom: 18px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ================= BOOKING GRID ================= */
+
+        .bookings-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .booking-card {
+            border: 1px solid #e1e9f4;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            background: white;
+
+            transition: .25s ease;
+
+            box-shadow:
+                0 8px 25px
+                rgba(15, 23, 42, .04);
+        }
+
+        .booking-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(37, 99, 235, .10);
+        }
+
+        .booking-top {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: #edf4ff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            flex-shrink: 0;
+        }
+
+        .booking-title {
+            flex: 1;
+        }
+
+        .booking-label {
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            color: #2563eb;
+        }
+
+        .booking-title h3 {
+            margin: 4px 0 0;
+
+            font-family: "Sora", sans-serif;
+
+            font-size: 16px;
+
+            color: #172554;
+        }
+
+        .booking-status {
+            background: #ecfdf3;
+
+            color: #15803d;
+
+            border-radius: 999px;
+
+            padding: 6px 9px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .booking-divider {
+            height: 1px;
+
+            background: #edf1f7;
+
+            margin-bottom: 18px;
+        }
+
+        .booking-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+        }
+
+        .info-icon {
+            font-size: 17px;
+        }
+
+        .info-item small {
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: .8px;
+
+            margin-bottom: 3px;
+        }
+
+        .info-item strong {
+            display: block;
+
+            color: #334155;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            margin-top: 50px;
+
+            background: #172554;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 28px 20px;
+
+            border-radius: 20px;
+        }
+
+        .footer strong {
+            font-family: "Sora", sans-serif;
+
+            font-size: 16px;
+        }
+
+        .footer p {
+            color: #b9c7df;
+
+            font-size: 10px;
+
+            margin: 7px 0 0;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .page {
+                padding: 35px 4% 60px;
+            }
+
+            .page-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .page-heading h1 {
+                font-size: 30px;
+            }
+
+            .bookings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bookings-wrapper {
+                padding: 20px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .brand-text strong {
+                font-size: 14px;
+            }
+
+            .brand-text small {
+                font-size: 7px;
+            }
+
+            .logo-paws {
+                width: 40px;
+                height: 40px;
+            }
+
+            .icon-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .heading-icon {
+                width: 58px;
+                height: 58px;
+                font-size: 28px;
+            }
+
+            .page-heading h1 {
+                font-size: 26px;
+            }
+
+            .booking-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo-area">
+
+        <div class="logo-paws">
+            🐾
+        </div>
+
+        <div class="brand-text">
+
+            <strong>PAWHUB</strong>
+
+            <small>
+                Pet Care Community
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-icons">
+
+        <button
+            class="icon-btn wishlist-nav-btn"
+            title="Wishlist"
+            onclick="openWishlist()">
+            ❤️
+        </button>
+
+        <button
+            class="icon-btn"
+            title="Cart"
+            onclick="openCart()">
+            🛒
+        </button>
+
+        <button
+            class="icon-btn"
+            title="Menu"
+            onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MENU ================= -->
+
+<div
+    id="menuOverlay"
+    class="menu-overlay"
+    onclick="closeMenu()">
+</div>
+
+
+<div
+    id="menuPanel"
+    class="menu-panel">
+
+    <div class="menu-header">
+
+        <h2>PAWHUB Menu 🐾</h2>
+
+        <button
+            class="menu-close"
+            onclick="closeMenu()">
+            ×
+        </button>
+
+    </div>
+
+
+    <button class="menu-link"
+            onclick="goTo('/home')">
+        🏠 Home
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/dashboard')">
+        📊 Dashboard
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/adoption')">
+        🐶 Adoption
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/marketplace')">
+        🛒 Marketplace
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/lost-found')">
+        🔎 Lost & Found
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/pet-services')">
+        🩺 Pet Services
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/vaccination')">
+        💉 Vaccination
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/vets')">
+        🏥 Vet Finder
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/community')">
+        👥 Community
+    </button>
+
+    <button class="menu-link"
+            onclick="goTo('/my-pets')">
+        🐾 My Pets
+    </button>
+
+    <button class="menu-link active">
+        📅 My Bookings
+    </button>
+
+    <div class="menu-divider"></div>
+
+    <button
+        class="menu-link"
+        onclick="logoutUser()">
+        🚪 Logout
+    </button>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="page">
+
+    <div class="page-inner">
+
+
+        <!-- HEADING -->
+
+        <section class="page-heading">
+
+            <div class="heading-left">
+
+                <div class="heading-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <div class="eyebrow">
+                        PAWHUB SERVICES
+                    </div>
+
+                    <h1>
+                        My <span>Bookings</span> 📋
+                    </h1>
+
+                    <p>
+                        View and manage all your pet service bookings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="book-btn"
+                onclick="goTo('/pet-services')">
+
+                + Book a Service 🐾
+
+            </button>
+
+        </section>
+
+
+        <!-- BOOKINGS -->
+
+        <section class="bookings-wrapper">
+
+            <div class="section-top">
+
+                <div>
+
+                    <h2>
+                        Your Bookings
+                    </h2>
+
+                    <p>
+                        Your upcoming and previous service appointments
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loadingState"
+                class="state-box">
+
+                <div class="loading-spinner">
+                </div>
+
+                <h3>
+                    Loading your bookings...
+                </h3>
+
+                <p>
+                    Please wait while we fetch your appointments.
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <div
+                id="loginState"
+                class="state-box"
+                style="display:none;">
+
+                <div class="state-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Please Login
+                </h3>
+
+                <p>
+                    Login to view your bookings.
+                </p>
+
+                <button
+                    onclick="goTo('/login')">
+                    Login
+                </button>
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="emptyState"
+                class="state-box"
+                style="display:none;">
+
+                <div class="state-icon">
+                    🐶
+                </div>
+
+                <h3>
+                    No Bookings Yet
+                </h3>
+
+                <p>
+                    You haven't booked any pet services yet.
+                </p>
+
+                <button
+                    onclick="goTo('/pet-services')">
+                    Explore Services 🐾
+                </button>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="errorState"
+                class="state-box"
+                style="display:none;">
+
+                <div class="state-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Unable to Load Bookings
+                </h3>
+
+                <p id="errorMessage">
+                    Something went wrong while loading your appointments.
+                </p>
+
+                <button
+                    onclick="loadBookings()">
+                    Try Again
+                </button>
+
+            </div>
+
+
+            <!-- BOOKING CARDS -->
+
+            <div
+                id="bookingsContainer"
+                class="bookings-grid">
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <strong>
+                🐾 PAWHUB
+            </strong>
+
+            <p>
+                Pet Care Community • Caring for Every Paw ❤️
+            </p>
+
+        </footer>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   PAWHUB - MY BOOKINGS
+===================================================== */
+
+
+/* =====================================================
+   DOM READY
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadBookings();
+
+    }
+);
+
+
+/* =====================================================
+   GET LOGGED-IN USER
+===================================================== */
+
+function getLoggedInUser() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "loggedInUser"
+            ) || "null"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "User data error:",
+            error
+        );
+
+        return null;
+    }
+}
+
+
+/* =====================================================
+   LOAD BOOKINGS
+===================================================== */
+
+async function loadBookings() {
+
+    const loading =
+        document.getElementById(
+            "loadingState"
+        );
+
+    const login =
+        document.getElementById(
+            "loginState"
+        );
+
+    const empty =
+        document.getElementById(
+            "emptyState"
+        );
+
+    const error =
+        document.getElementById(
+            "errorState"
+        );
+
+    const container =
+        document.getElementById(
+            "bookingsContainer"
+        );
+
+
+    /* ================================================
+       RESET STATES
+    ================================================ */
+
+    if (loading) {
+        loading.style.display = "block";
+    }
+
+    if (login) {
+        login.style.display = "none";
+    }
+
+    if (empty) {
+        empty.style.display = "none";
+    }
+
+    if (error) {
+        error.style.display = "none";
+    }
+
+    if (container) {
+        container.innerHTML = "";
+    }
+
+
+    /* ================================================
+       GET USER
+    ================================================ */
+
+    const loggedInUser =
+        getLoggedInUser();
+
+
+    /* ================================================
+       LOGIN CHECK
+    ================================================ */
+
+    if (
+        !loggedInUser ||
+        !loggedInUser.id
+    ) {
+
+        if (loading) {
+            loading.style.display = "none";
+        }
+
+        if (login) {
+            login.style.display = "block";
+        }
+
+        return;
+    }
+
+
+    console.log(
+        "Loading bookings for user:",
+        loggedInUser.id
+    );
+
+
+    /* ================================================
+       FETCH USER BOOKINGS
+    ================================================ */
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/bookings/user/" +
+                loggedInUser.id,
+                {
+                    method: "GET",
+                    headers: {
+                        "Accept":
+                            "application/json"
+                    },
+                    cache: "no-store"
+                }
+            );
+
+
+        console.log(
+            "Bookings response:",
+            response.status
+        );
+
+
+        /* ============================================
+           RESPONSE ERROR
+        ============================================ */
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            console.error(
+                "Bookings API error:",
+                errorText
+            );
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+        }
+
+
+        /* ============================================
+           READ JSON
+        ============================================ */
+
+        const bookings =
+            await response.json();
+
+
+        console.log(
+            "MY BOOKINGS:",
+            bookings
+        );
+
+
+        /* ============================================
+           STOP LOADING
+        ============================================ */
+
+        if (loading) {
+            loading.style.display = "none";
+        }
+
+
+        /* ============================================
+           EMPTY
+        ============================================ */
+
+        if (
+            !Array.isArray(bookings) ||
+            bookings.length === 0
+        ) {
+
+            if (empty) {
+                empty.style.display = "block";
+            }
+
+            return;
+        }
+
+
+        /* ============================================
+           RENDER
+        ============================================ */
+
+        renderBookings(bookings);
+
+    }
+
+    catch (errorMessage) {
+
+        console.error(
+            "Booking loading error:",
+            errorMessage
+        );
+
+
+        if (loading) {
+            loading.style.display = "none";
+        }
+
+
+        if (error) {
+            error.style.display = "block";
+        }
+    }
+}
+
+
+/* =====================================================
+   RENDER BOOKINGS
+===================================================== */
+
+function renderBookings(bookings) {
+
+    const container =
+        document.getElementById(
+            "bookingsContainer"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    bookings.forEach(
+        function(booking) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "booking-card";
+
+
+            const service =
+                booking.service ||
+                "Pet Service";
+
+
+            const serviceIcon =
+                getServiceIcon(
+                    service
+                );
+
+
+            card.innerHTML = `
+
+                <div class="booking-top">
+
+                    <div class="service-icon">
+
+                        ${serviceIcon}
+
+                    </div>
+
+
+                    <div class="booking-title">
+
+                        <span class="booking-label">
+
+                            SERVICE BOOKING
+
+                        </span>
+
+                        <h3>
+
+                            ${escapeHTML(service)}
+
+                        </h3>
+
+                    </div>
+
+
+                    <div class="booking-status">
+
+                        Confirmed ✓
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-details">
+
+                    <div class="detail-item">
+
+                        <span>👤 Customer</span>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                booking.userName ||
+                                "Not provided"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>🐾 Pet</span>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                booking.petName ||
+                                "Not provided"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>📅 Date</span>
+
+                        <strong>
+
+                            ${formatDate(
+                                booking.serviceDate
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>⏰ Time</span>
+
+                        <strong>
+
+                            ${formatTime(
+                                booking.serviceTime
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>📞 Phone</span>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                booking.phone ||
+                                "Not provided"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>📝 Note</span>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                booking.note ||
+                                "No additional note"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+}
+
+
+/* =====================================================
+   SERVICE ICON
+===================================================== */
+
+function getServiceIcon(service) {
+
+    const value =
+        String(
+            service || ""
+        ).toLowerCase();
+
+
+    if (
+        value.includes("veter")
+    ) {
+
+        return "🩺";
+    }
+
+
+    if (
+        value.includes("groom")
+    ) {
+
+        return "✂️";
+    }
+
+
+    if (
+        value.includes("train")
+    ) {
+
+        return "🐕";
+    }
+
+
+    if (
+        value.includes("board")
+    ) {
+
+        return "🏠";
+    }
+
+
+    if (
+        value.includes("vacc")
+    ) {
+
+        return "💉";
+    }
+
+
+    return "🐾";
+}
+
+
+/* =====================================================
+   DATE FORMAT
+===================================================== */
+
+function formatDate(value) {
+
+    if (!value) {
+        return "Not provided";
+    }
+
+
+    try {
+
+        const date =
+            new Date(value);
+
+
+        if (
+            Number.isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return escapeHTML(
+                value
+            );
+        }
+
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    }
+
+    catch (error) {
+
+        return escapeHTML(
+            value
+        );
+    }
+}
+
+
+/* =====================================================
+   TIME FORMAT
+===================================================== */
+
+function formatTime(value) {
+
+    if (!value) {
+        return "Not provided";
+    }
+
+
+    try {
+
+        const parts =
+            String(value).split(":");
+
+
+        if (
+            parts.length < 2
+        ) {
+
+            return escapeHTML(
+                value
+            );
+        }
+
+
+        let hour =
+            parseInt(
+                parts[0],
+                10
+            );
+
+
+        const minute =
+            parts[1];
+
+
+        const period =
+            hour >= 12
+                ? "PM"
+                : "AM";
+
+
+        hour =
+            hour % 12 || 12;
+
+
+        return (
+            hour +
+            ":" +
+            minute +
+            " " +
+            period
+        );
+
+    }
+
+    catch (error) {
+
+        return escapeHTML(
+            value
+        );
+    }
+}
+
+
+/* =====================================================
+   GO TO SERVICES
+===================================================== */
+
+function goToServices() {
+
+    window.location.href =
+        "/pet-services";
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
+
+</script>
+</body>
+</html>

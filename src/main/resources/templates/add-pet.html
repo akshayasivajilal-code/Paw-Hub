@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add My Pet | PAWHUB</title>
+
+    <link rel="stylesheet" href="/style/add-pet.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Outfit:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Background Paws -->
+    <div class="bg-paw paw-one">🐾</div>
+    <div class="bg-paw paw-two">🐾</div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+
+            <div class="logo-paws">
+                🐾
+            </div>
+
+            <div class="brand-text">
+
+                <h2>PAWHUB</h2>
+
+                <span>
+                    Pet Care Community
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-icons">
+
+            <button
+                class="icon-btn"
+                onclick="showNotification()"
+                title="Notifications">
+
+                🔔
+
+            </button>
+
+
+            <button
+                class="icon-btn"
+                onclick="showSaved()"
+                title="Saved">
+
+                ❤️
+
+            </button>
+
+
+            <button
+                class="icon-btn"
+                onclick="showMenu()"
+                title="Menu">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main>
+
+
+        <!-- Page Heading -->
+
+        <section class="page-heading">
+
+            <div class="heading-icon">
+                🐶
+            </div>
+
+            <div>
+
+                <span class="small-title">
+                    PET PROFILE
+                </span>
+
+                <h1>
+                    Add Your <span>Best Friend</span> 🐾
+                </h1>
+
+                <p>
+                    Tell us a little about your furry companion
+                    and create their PAWHUB profile.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FORM CARD
+        ========================== -->
+
+        <section class="form-card">
+
+
+            <!-- LEFT PANEL -->
+
+            <div class="pet-intro">
+
+                <div class="pet-circle">
+                    🐾
+                </div>
+
+
+                <h2>
+                    Meet your new<br>
+                    <span>PAWHUB profile</span>
+                </h2>
+
+
+                <p>
+                    Add your pet's details so you can
+                    easily manage their profile and
+                    keep everything in one place.
+                </p>
+
+
+                <!-- Tips -->
+
+                <div class="tips">
+
+                    <div class="tip">
+
+                        <span>✓</span>
+
+                        Keep your pet information updated
+
+                    </div>
+
+
+                    <div class="tip">
+
+                        <span>✓</span>
+
+                        Add a photo to personalize the profile
+
+                    </div>
+
+
+                    <div class="tip">
+
+                        <span>✓</span>
+
+                        You can update details later
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 FORM AREA
+            ========================== -->
+
+            <div class="form-area">
+
+                <h2>
+                    Pet Information
+                </h2>
+
+                <p class="form-subtitle">
+                    Fill in the details below
+                </p>
+
+
+                <form id="petForm">
+
+
+                    <!-- Name + Type -->
+
+                    <div class="form-row">
+
+
+                        <div class="field">
+
+                            <label for="name">
+                                Pet Name <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="field-icon">
+                                    🐾
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="e.g. Bruno"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="field">
+
+                            <label for="type">
+                                Pet Type <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="field-icon">
+                                    🐶
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="type"
+                                    placeholder="e.g. Dog, Cat"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Breed + Age -->
+
+                    <div class="form-row">
+
+
+                        <div class="field">
+
+                            <label for="breed">
+                                Breed
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="field-icon">
+                                    🐕
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="breed"
+                                    placeholder="e.g. Golden Retriever">
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="field">
+
+                            <label for="age">
+                                Age
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="field-icon">
+                                    🎂
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="age"
+                                    placeholder="Age in years"
+                                    min="0">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Gender -->
+
+                    <div class="field">
+
+                        <label for="gender">
+                            Gender
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="field-icon">
+                                💗
+                            </span>
+
+                            <select id="gender">
+
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Description -->
+
+                    <div class="field">
+
+                        <label for="description">
+                            About Your Pet
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Tell us something about your pet..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- Image -->
+
+                    <div class="field">
+
+                        <label for="image">
+                            Pet Image URL
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="field-icon">
+                                📷
+                            </span>
+
+                            <input
+                                type="text"
+                                id="image"
+                                placeholder="Paste your pet image URL">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="add-btn">
+
+                        <span>
+                            🐾
+                        </span>
+
+                        Add Pet to PAWHUB
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+
+        /* Notification */
+
+        function showNotification() {
+
+            alert("No new notifications 🐾");
+
+        }
+
+
+
+        /* Saved */
+
+        function showSaved() {
+
+            alert("Saved pets and items ❤️");
+
+        }
+
+
+
+        /* Menu */
+
+        function showMenu() {
+
+            alert("PAWHUB Menu ☰");
+
+        }
+
+
+
+        /* =========================
+           ADD PET
+        ========================== */
+
+        document
+            .getElementById("petForm")
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    /* Get logged-in user */
+
+                    const loggedInUser =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "loggedInUser"
+                            )
+                        );
+
+
+                    /* Login check */
+
+                    if (
+                        !loggedInUser ||
+                        !loggedInUser.id
+                    ) {
+
+                        alert(
+                            "Please login first! 🐾"
+                        );
+
+                        window.location.href =
+                            "/login";
+
+                        return;
+                    }
+
+
+                    /* Pet details */
+
+                    const pet = {
+
+                        name:
+                            document
+                                .getElementById("name")
+                                .value,
+
+                        type:
+                            document
+                                .getElementById("type")
+                                .value,
+
+                        breed:
+                            document
+                                .getElementById("breed")
+                                .value,
+
+                        age:
+                            document
+                                .getElementById("age")
+                                .value
+                                ? parseInt(
+                                    document
+                                        .getElementById("age")
+                                        .value
+                                )
+                                : null,
+
+                        gender:
+                            document
+                                .getElementById("gender")
+                                .value,
+
+                        description:
+                            document
+                                .getElementById("description")
+                                .value,
+
+                        image:
+                            document
+                                .getElementById("image")
+                                .value,
+
+                        status:
+                            "My Pet"
+
+                    };
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                "/api/pets?userId=" +
+                                loggedInUser.id,
+                                {
+
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        JSON.stringify(pet)
+
+                                }
+                            );
+
+
+                        if (response.ok) {
+
+                            alert(
+                                "Pet added successfully! 🐶🐱❤️"
+                            );
+
+
+                            document
+                                .getElementById("petForm")
+                                .reset();
+
+                        }
+
+                        else {
+
+                            alert(
+                                "Failed to add pet. Please try again."
+                            );
+
+                        }
+
+                    }
+
+                    catch (error) {
+
+                        console.error(error);
+
+                        alert(
+                            "Cannot connect to server. Please check Spring Boot."
+                        );
+
+                    }
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
