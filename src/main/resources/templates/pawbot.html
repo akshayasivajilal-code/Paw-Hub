@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAWHUB | Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/home.css">
+<link rel="stylesheet" href="assets/pawbot.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/favicon.png" alt="Logo">
+        <h2>PAWHUB</h2>
+    </div>
+    <nav class="navbar">
+        <a href="adoption.html">Adoption</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="lost-found.html">Lost & Found</a>
+        <a href="vets.html">Vet Finder</a>
+        <a href="community.html">Community</a>
+        <a href="vaccination.html">Vaccination</a>
+    </nav>
+    <div class="search-box">
+        <input type="text" placeholder="Search pets...">
+        <button>🔍</button>
+    </div>
+    <div class="nav-icons">
+        <button class="icon-btn">🔔</button>
+        <button class="icon-btn">👤</button>
+        <button class="icon-btn">⚙️</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Find Your <span>Forever Friend</span></h1>
+        <p>Adoption • Marketplace • Lost & Found • Vet Services</p>
+        <button class="explore-btn">Explore PawHub</button>
+    </div>
+    <div class="hero-image">
+        <div class="blended-image">
+            <img src="images/logo.png" alt="Hero">
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <h2>Choose Your Service</h2>
+    <div class="cards">
+        <a href="adoption.html" class="card"><img src="images/adopt1.png"><h3>Adoption</h3><p>Find your perfect companion.</p></a>
+        <a href="marketplace.html" class="card"><img src="images/marketplace1.png"><h3>Marketplace</h3><p>Everything your pet needs.</p></a>
+        <a href="lost-found.html" class="card"><img src="images/lost-found.npg.jpg"><h3>Lost & Found</h3><p>Help reunite pets.</p></a>
+        <a href="vets.html" class="card"><img src="images/vet finder.jpg"><h3>Vet Finder</h3><p>Nearby trusted clinics.</p></a>
+        <a href="community.html" class="card"><img src="images/community.jpg"><h3>Community</h3><p>Meet pet lovers.</p></a>
+        <a href="vaccination.html" class="card"><img src="images/vaccination.jpg"><h3>Vaccination</h3><p>Never miss reminders.</p></a>
+    </div>
+</section>
+
+<footer>
+    <h3>PAWHUB</h3>
+    <p>Every Paw Deserves a Loving Home 🐾</p>
+</footer>
+
+<!-- PAWHUB PAWBOT -->
+<div id="pawbot-root">
+    <button id="pawbot-launcher" class="pawbot-launcher" type="button">🐾</button>
+
+    <section id="pawbot-window" class="pawbot-window">
+        <div class="pawbot-header">
+            <div><strong>PAWHUB Assistant</strong><span>● Online</span></div>
+            <button id="pawbot-close" type="button">×</button>
+        </div>
+
+        <div id="pawbot-messages" class="pawbot-messages">
+            <div class="pawbot-msg bot">
+                Hi! 🐾 I'm PawBot.<br>
+                Ask me about adoption, vets, vaccination, lost pets, marketplace or community.
+            </div>
+        </div>
+
+        <div class="pawbot-quick">
+            <button type="button" data-q="Show available pets">🐶 Adoption</button>
+            <button type="button" data-q="How can I find a vet?">🩺 Vet</button>
+            <button type="button" data-q="Tell me about vaccination">💉 Vaccination</button>
+            <button type="button" data-q="I lost my pet">🔎 Lost Pet</button>
+        </div>
+
+        <form id="pawbot-form" class="pawbot-input-area">
+            <input id="pawbot-input" type="text" placeholder="Ask PawBot..." autocomplete="off">
+            <button type="submit">➤</button>
+        </form>
+    </section>
+</div>
+
+<script>
+(function () {
+
+    const launcher = document.getElementById("pawbot-launcher");
+    const botWindow = document.getElementById("pawbot-window");
+    const closeButton = document.getElementById("pawbot-close");
+    const messages = document.getElementById("pawbot-messages");
+    const form = document.getElementById("pawbot-form");
+    const input = document.getElementById("pawbot-input");
+
+    if (!launcher || !botWindow || !closeButton || !messages || !form || !input) {
+        console.error("PawBot: required HTML elements are missing.");
+        return;
+    }
+
+    function addMessage(text, type) {
+        const message = document.createElement("div");
+        message.className = "pawbot-msg " + type;
+
+        if (type === "bot") {
+            message.innerHTML =
+                '<div class="pawbot-mini-avatar">🐶</div>' +
+                '<div>' + text + '</div>';
+        } else {
+            message.innerHTML = '<div>' + text + '</div>';
+        }
+
+        messages.appendChild(message);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function showTyping() {
+        const typing = document.createElement("div");
+        typing.id = "pawbot-typing";
+        typing.className = "pawbot-msg bot";
+
+        typing.innerHTML =
+            '<div class="pawbot-mini-avatar">🐶</div>' +
+            '<div class="pawbot-typing-dots">' +
+            '<span></span><span></span><span></span>' +
+            '</div>';
+
+        messages.appendChild(typing);
+        messages.scrollTop = messages.scrollHeight;
+
+        return typing;
+    }
+
+    function getReply(text) {
+
+        const q = text
+            .toLowerCase()
+            .replace(/[?!.,]/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+
+        /* ---------- GREETINGS ---------- */
+
+        if (
+            /^(hi|hello|hey|hai|hii|good morning|good evening|good afternoon)$/.test(q)
+        ) {
+            return `
+                Hi! 🐾 I'm PawBot, your PAWHUB pet-care assistant.
+                <br><br>
+                You can ask me a pet-care question or use the Quick Help options below.
+            `;
+        }
+
+        /* ---------- IDENTITY ---------- */
+
+        if (
+            q.includes("who are you") ||
+            q.includes("what are you") ||
+            q.includes("your name")
+        ) {
+            return `
+                I'm <b>PawBot AI</b> 🐶 — the pet-care assistant inside PAWHUB.
+                <br><br>
+                I can answer basic pet-care questions and help you navigate PAWHUB services.
+            `;
+        }
+
+        /* ---------- DOG BASICS ---------- */
+
+        if (
+            q.includes("what is a dog") ||
+            q.includes("what are dogs") ||
+            q.includes("tell me about dogs") ||
+            q.includes("about dogs")
+        ) {
+            return `
+                A dog is a domesticated mammal and one of the most common companion animals. 🐶
+                <br><br>
+                Dogs need balanced food, clean water, exercise, grooming,
+                vaccination, parasite prevention and regular veterinary care.
+            `;
+        }
+
+        if (
+            q.includes("how long do dogs live") ||
+            q.includes("dog lifespan") ||
+            q.includes("lifespan of a dog")
+        ) {
+            return `
+                Many dogs live around <b>10–13 years</b>, although lifespan varies
+                by breed, size, genetics, nutrition and healthcare. 🐶
+            `;
+        }
+
+        /* ---------- CAT BASICS ---------- */
+
+        if (
+            q.includes("what is a cat") ||
+            q.includes("what are cats") ||
+            q.includes("tell me about cats") ||
+            q.includes("about cats")
+        ) {
+            return `
+                A cat is a domesticated mammal commonly kept as a companion animal. 🐱
+                <br><br>
+                Cats need appropriate food, fresh water, a clean litter area,
+                enrichment, grooming and regular veterinary care.
+            `;
+        }
+
+        if (
+            q.includes("how long do cats live") ||
+            q.includes("cat lifespan") ||
+            q.includes("lifespan of a cat")
+        ) {
+            return `
+                Many indoor cats can live into their mid-teens or longer,
+                depending on genetics, nutrition, environment and veterinary care. 🐱
+            `;
+        }
+
+        /* ---------- FOOD ---------- */
+
+        if (
+            q.includes("what should i feed my dog") ||
+            q.includes("what can dogs eat") ||
+            q.includes("dog food") ||
+            q.includes("food for dogs") ||
+            q.includes("what food can dogs eat")
+        ) {
+            return `
+                Dogs generally need a nutritionally complete diet appropriate
+                for their age, size and health. 🐶
+                <br><br>
+                Fresh water should always be available.
+                Avoid giving dogs chocolate, grapes/raisins, onions, garlic,
+                alcohol and foods containing xylitol.
+                <br><br>
+                For a specific diet or medical condition, ask a veterinarian.
+            `;
+        }
+
+        if (
+            q.includes("what can cats eat") ||
+            q.includes("what should i feed my cat") ||
+            q.includes("cat food") ||
+            q.includes("food for cats")
+        ) {
+            return `
+                Cats are obligate carnivores and need a nutritionally complete
+                cat food suitable for their life stage. 🐱
+                <br><br>
+                Keep fresh water available and avoid foods such as onions,
+                garlic, chocolate and alcohol.
+            `;
+        }
+
+        /* ---------- WATER ---------- */
+
+        if (
+            q.includes("how much water") ||
+            q.includes("water for dog") ||
+            q.includes("water for cat") ||
+            q.includes("do pets need water")
+        ) {
+            return `
+                Yes. 💧 Fresh, clean water should be available to pets throughout
+                the day. Water needs vary with body size, food, activity,
+                weather and health.
+                <br><br>
+                A sudden change in drinking habits can be a reason to contact a vet.
+            `;
+        }
+
+        /* ---------- BATHING / GROOMING ---------- */
+
+        if (
+            q.includes("how often should i bathe my dog") ||
+            q.includes("how often bathe dog") ||
+            q.includes("dog bath") ||
+            q.includes("bathe my dog")
+        ) {
+            return `
+                Bathing frequency depends on breed, coat, skin condition and lifestyle. 🛁
+                <br><br>
+                Avoid excessive bathing because it can irritate the skin.
+                Use a pet-safe shampoo rather than human shampoo.
+            `;
+        }
+
+        if (
+            q.includes("grooming") ||
+            q.includes("brush my dog") ||
+            q.includes("brush my cat") ||
+            q.includes("pet grooming")
+        ) {
+            return `
+                Regular grooming helps keep the coat and skin healthy. ✨
+                <br><br>
+                Brushing frequency depends on the pet's coat.
+                Nail care, ear checks and dental care are also important.
+            `;
+        }
+
+        /* ---------- EXERCISE ---------- */
+
+        if (
+            q.includes("how much exercise") ||
+            q.includes("exercise for dog") ||
+            q.includes("exercise my dog") ||
+            q.includes("dog exercise")
+        ) {
+            return `
+                Exercise needs vary by age, breed, size and health. 🐕
+                <br><br>
+                Daily walks, play and mental stimulation are useful for many dogs.
+                Puppies and older dogs may need different routines.
+            `;
+        }
+
+        /* ---------- VACCINATION ---------- */
+
+        if (
+            q.includes("vaccin") ||
+            q.includes("vaccine") ||
+            q.includes("vaccination schedule")
+        ) {
+            return `
+                Vaccination helps protect pets against important infectious diseases. 💉
+                <br><br>
+                The schedule depends on species, age, previous vaccinations,
+                local disease risks and veterinary advice.
+                <br><br>
+                <a class="pawbot-link" href="/vaccination">💉 Open PAWHUB Vaccination</a>
+            `;
+        }
+
+        /* ---------- DEWORMING ---------- */
+
+        if (
+            q.includes("deworm") ||
+            q.includes("worms in dog") ||
+            q.includes("worms in cat") ||
+            q.includes("deworming")
+        ) {
+            return `
+                Deworming is used to control certain intestinal parasites. 🪱
+                <br><br>
+                The correct medicine and schedule depend on the pet's age,
+                weight, parasite risk and veterinary advice.
+            `;
+        }
+
+        /* ---------- VET / EMERGENCY ---------- */
+
+        if (
+            q.includes("vet") ||
+            q.includes("veterinarian") ||
+            q.includes("doctor for my pet") ||
+            q.includes("pet doctor") ||
+            q.includes("clinic")
+        ) {
+            return `
+                If your pet needs medical attention, a veterinarian can examine
+                the pet and recommend appropriate treatment. 🩺
+                <br><br>
+                <a class="pawbot-link" href="/vets">🩺 Open PAWHUB Vet Finder</a>
+            `;
+        }
+
+        if (
+            q.includes("emergency") ||
+            q.includes("not breathing") ||
+            q.includes("poison") ||
+            q.includes("bleeding badly") ||
+            q.includes("severe bleeding")
+        ) {
+            return `
+                A suspected poisoning, breathing difficulty, severe bleeding,
+                collapse or serious injury can require urgent veterinary care. 🚨
+                <br><br>
+                Contact a veterinarian or emergency veterinary service immediately.
+                Do not give medication unless a veterinarian tells you to.
+            `;
+        }
+
+        /* ---------- TRAINING ---------- */
+
+        if (
+            q.includes("train my dog") ||
+            q.includes("dog training") ||
+            q.includes("puppy training") ||
+            q.includes("how to train")
+        ) {
+            return `
+                Positive-reinforcement training is commonly used with dogs. 🐕
+                <br><br>
+                Reward desired behaviour, keep sessions short and consistent,
+                and avoid punishment-based methods.
+            `;
+        }
+
+        /* ---------- PUPPY / KITTEN ---------- */
+
+        if (
+            q.includes("puppy care") ||
+            q.includes("how to care for a puppy") ||
+            q.includes("new puppy")
+        ) {
+            return `
+                Puppies need age-appropriate food, vaccination, parasite prevention,
+                safe socialisation, sleep, exercise and regular veterinary care. 🐶
+            `;
+        }
+
+        if (
+            q.includes("kitten care") ||
+            q.includes("how to care for a kitten") ||
+            q.includes("new kitten")
+        ) {
+            return `
+                Kittens need appropriate kitten food, fresh water, a safe environment,
+                litter training, vaccination and veterinary care. 🐱
+            `;
+        }
+
+        /* ---------- PAWHUB SERVICES ---------- */
+
+        if (
+            q.includes("adopt") ||
+            q.includes("available pet") ||
+            q.includes("find a pet") ||
+            q.includes("pet for adoption")
+        ) {
+            return `
+                You can browse pets available for adoption on PAWHUB. 🐶🐱
+                <br><br>
+                <a class="pawbot-link" href="/adoption">🐾 Open Adoption</a>
+            `;
+        }
+
+        if (
+            q.includes("lost pet") ||
+            q.includes("missing pet") ||
+            q.includes("lost my pet") ||
+            q.includes("found a pet")
+        ) {
+            return `
+                PAWHUB Lost & Found can help you share or search for missing-pet information. 🔎
+                <br><br>
+                <a class="pawbot-link" href="/lost-found">🔎 Open Lost & Found</a>
+            `;
+        }
+
+        if (
+            q.includes("marketplace") ||
+            q.includes("pet supplies") ||
+            q.includes("pet products") ||
+            q.includes("buy pet food")
+        ) {
+            return `
+                You can explore pet products and supplies through PAWHUB Marketplace. 🛒
+                <br><br>
+                <a class="pawbot-link" href="/marketplace">🛒 Open Marketplace</a>
+            `;
+        }
+
+        if (
+            q.includes("community") ||
+            q.includes("pet community") ||
+            q.includes("pet lovers")
+        ) {
+            return `
+                PAWHUB Community is for connecting with other pet lovers and sharing pet-related content. ❤️
+                <br><br>
+                <a class="pawbot-link" href="/community">❤️ Open Community</a>
+            `;
+        }
+
+        /* ---------- THANKS ---------- */
+
+        if (
+            q.includes("thank you") ||
+            q.includes("thanks") ||
+            q === "thank"
+        ) {
+            return `
+                You're welcome! 🐾
+                <br><br>
+                Ask me anything about basic pet care.
+            `;
+        }
+
+        /* ---------- FALLBACK ---------- */
+
+        return `
+            I didn't quite understand that question yet. 🐾
+            <br><br>
+            Try asking:
+            <br>• What should I feed my dog?
+            <br>• How often should I bathe my dog?
+            <br>• What is a cat?
+            <br>• How much water does a dog need?
+            <br>• What is vaccination?
+            <br>• What should I do if my pet is lost?
+        `;
+    }
+
+    function sendMessage(text) {
+
+        text = text.trim();
+
+        if (!text) return;
+
+        addMessage(text, "user");
+        input.value = "";
+
+        const typing = showTyping();
+
+        setTimeout(function () {
+
+            if (typing) typing.remove();
+
+            addMessage(getReply(text), "bot");
+
+        }, 550);
+    }
+
+    launcher.addEventListener("click", function () {
+
+        botWindow.classList.add("open");
+        botWindow.setAttribute("aria-hidden", "false");
+
+        input.focus();
+
+    });
+
+    closeButton.addEventListener("click", function () {
+
+        botWindow.classList.remove("open");
+        botWindow.setAttribute("aria-hidden", "true");
+
+    });
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+        sendMessage(input.value);
+
+    });
+
+    document.querySelectorAll(".pawbot-quick button")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                sendMessage(button.getAttribute("data-q"));
+
+            });
+
+        });
+
+})();
+</script>
+
+
+</body>
+</html>
