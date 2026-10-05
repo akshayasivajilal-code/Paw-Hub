@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* =========================================================
    RESET
@@ -21,6 +21,19 @@ body {
     overflow-x: hidden;
 }
 
+button,
+a {
+    font-family: inherit;
+}
+
+button {
+    outline: none;
+}
+
+a {
+    color: inherit;
+}
+
 
 /* =========================================================
    NAVBAR
@@ -29,7 +42,6 @@ body {
 header {
     height: 82px;
     width: 100%;
-
     padding: 0 7%;
 
     display: flex;
@@ -40,14 +52,35 @@ header {
     top: 0;
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.96);
-
-    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     border-bottom: 1px solid rgba(191, 219, 254, 0.65);
 
     box-shadow:
-        0 4px 20px rgba(37, 99, 235, 0.06);
+        0 5px 25px rgba(37, 99, 235, 0.07);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa,
+            #facc15,
+            #2563eb
+        );
+
+    background-size: 200% 100%;
+    animation: navbarLine 6s linear infinite;
 }
 
 
@@ -61,9 +94,6 @@ header {
     gap: 12px;
 }
 
-
-/* Blue Paw Logo */
-
 .logo-box {
     width: 56px;
     height: 56px;
@@ -72,42 +102,48 @@ header {
     align-items: center;
     justify-content: center;
 
-    background: #2658F9;
+    background:
+        linear-gradient(
+            145deg,
+            #2563eb,
+            #1d4ed8
+        );
 
-    border-radius: 16px;
+    border-radius: 17px;
 
     font-size: 30px;
 
     box-shadow:
-        0 8px 20px rgba(38, 88, 249, 0.24);
+        0 10px 25px rgba(37, 99, 235, 0.28);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
+.logo:hover .logo-box {
+    transform: rotate(-5deg) scale(1.05);
 
-/* PAWHUB Text */
+    box-shadow:
+        0 14px 32px rgba(37, 99, 235, 0.35);
+}
 
 .logo-text h2 {
     font-family: 'Sora', sans-serif;
-
     font-size: 24px;
-
     font-weight: 800;
-
     letter-spacing: 0.5px;
 
     color: #2563eb;
 }
 
-
-/* Subtitle */
-
 .logo-text span {
     display: block;
-
     margin-top: 2px;
 
     color: #64748b;
-
     font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 
@@ -118,18 +154,22 @@ header {
 .nav-icons {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
 }
 
 .icon-btn {
     width: 46px;
     height: 46px;
 
-    border: 1.5px solid #dbeafe;
-
+    border: 1px solid #dbeafe;
     border-radius: 14px;
 
-    background: #f8fbff;
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4f8ff
+        );
 
     color: #2563eb;
 
@@ -139,12 +179,15 @@ header {
 
     cursor: pointer;
 
-    font-family: Arial, sans-serif;
-
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 600;
 
-    transition: all 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .icon-btn span {
@@ -153,15 +196,25 @@ header {
 }
 
 .icon-btn:hover {
-    background: #2563eb;
     color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
 
     border-color: #2563eb;
 
     transform: translateY(-3px);
 
     box-shadow:
-        0 10px 25px rgba(37, 99, 235, 0.25);
+        0 12px 25px rgba(37, 99, 235, 0.25);
+}
+
+.icon-btn:active {
+    transform: translateY(-1px) scale(0.96);
 }
 
 
@@ -181,34 +234,35 @@ header {
     gap: 55px;
 
     position: relative;
-
     overflow: hidden;
 
     background:
-
         radial-gradient(
-            circle at 88% 15%,
-            rgba(253, 230, 138, 0.55) 0,
+            circle at 85% 10%,
+            rgba(250, 204, 21, 0.22),
             transparent 20%
         ),
-
         radial-gradient(
-            circle at 7% 88%,
-            rgba(147, 197, 253, 0.50) 0,
-            transparent 28%
+            circle at 5% 85%,
+            rgba(96, 165, 250, 0.20),
+            transparent 27%
         ),
-
+        radial-gradient(
+            circle at 70% 85%,
+            rgba(191, 219, 254, 0.20),
+            transparent 25%
+        ),
         linear-gradient(
             135deg,
             #edf6ff 0%,
-            #ffffff 48%,
-            #fffbea 100%
+            #ffffff 47%,
+            #fffdf2 100%
         );
 }
 
 
 /* =========================================================
-   HERO DECORATIVE SHAPES
+   HERO DECORATION
 ========================================================= */
 
 .hero::before {
@@ -216,19 +270,19 @@ header {
 
     position: absolute;
 
-    width: 560px;
-    height: 560px;
+    width: 600px;
+    height: 600px;
 
-    right: -180px;
-    top: -210px;
+    right: -230px;
+    top: -260px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(253, 224, 71, 0.28),
-            rgba(253, 224, 71, 0.08) 55%,
+            rgba(253, 224, 71, 0.22),
+            rgba(253, 224, 71, 0.06) 55%,
             transparent 72%
         );
 
@@ -240,22 +294,51 @@ header {
 
     position: absolute;
 
-    width: 330px;
-    height: 330px;
+    width: 420px;
+    height: 420px;
 
-    left: -180px;
-    bottom: -190px;
+    left: -250px;
+    bottom: -260px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(96, 165, 250, 0.25),
+            rgba(59, 130, 246, 0.17),
             transparent 70%
         );
 
     pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO GRID EFFECT
+========================================================= */
+
+.hero-text::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    left: -80px;
+    top: -60px;
+
+    background-image:
+        radial-gradient(
+            #60a5fa 1px,
+            transparent 1px
+        );
+
+    background-size: 14px 14px;
+
+    opacity: 0.18;
+
+    z-index: -1;
 }
 
 
@@ -265,44 +348,39 @@ header {
 
 .hero-text {
     flex: 1;
-
     max-width: 650px;
 
     position: relative;
-
     z-index: 5;
 }
 
-
-/* =========================================================
-   HERO BADGE
-========================================================= */
-
 .hero-badge {
     display: inline-flex;
-
     align-items: center;
 
     padding: 10px 18px;
-
     margin-bottom: 20px;
 
     border-radius: 30px;
 
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.82);
 
     border: 1px solid #dbeafe;
 
     color: #2563eb;
 
     font-size: 12px;
-
     font-weight: 700;
 
     letter-spacing: 1px;
 
     box-shadow:
-        0 8px 22px rgba(37, 99, 235, 0.10);
+        0 8px 25px rgba(37, 99, 235, 0.09);
+
+    backdrop-filter: blur(10px);
+
+    animation:
+        badgeAppear 0.8s ease both;
 }
 
 
@@ -324,6 +402,9 @@ header {
     margin-bottom: 25px;
 
     color: #172554;
+
+    animation:
+        heroTitle 0.8s ease both;
 }
 
 .hero-text h1 span {
@@ -332,8 +413,8 @@ header {
     background:
         linear-gradient(
             90deg,
+            #1d4ed8,
             #2563eb,
-            #3b82f6,
             #60a5fa
         );
 
@@ -341,12 +422,8 @@ header {
     background-clip: text;
 
     -webkit-text-fill-color: transparent;
-
     color: transparent;
 }
-
-
-/* Heading underline */
 
 .hero-text h1::after {
     content: "";
@@ -354,7 +431,6 @@ header {
     display: block;
 
     width: 165px;
-
     height: 9px;
 
     margin-top: 13px;
@@ -386,8 +462,10 @@ header {
     color: #64748b;
 
     font-size: 18px;
-
     line-height: 1.7;
+
+    animation:
+        fadeUp 0.9s ease 0.15s both;
 }
 
 
@@ -396,6 +474,9 @@ header {
 ========================================================= */
 
 .explore-btn {
+    position: relative;
+    overflow: hidden;
+
     border: none;
 
     padding: 16px 29px;
@@ -411,25 +492,56 @@ header {
             #1d4ed8
         );
 
-    font-family: 'Outfit', sans-serif;
-
     font-size: 16px;
-
     font-weight: 700;
 
     cursor: pointer;
 
     box-shadow:
-        0 15px 30px rgba(37, 99, 235, 0.28);
+        0 15px 32px rgba(37, 99, 235, 0.28);
 
-    transition: all 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.explore-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.65s ease;
+}
+
+.explore-btn:hover::before {
+    left: 140%;
 }
 
 .explore-btn:hover {
     transform: translateY(-4px);
 
     box-shadow:
-        0 20px 40px rgba(37, 99, 235, 0.34);
+        0 20px 42px rgba(37, 99, 235, 0.35);
+}
+
+.explore-btn:active {
+    transform: translateY(-1px);
 }
 
 
@@ -439,10 +551,12 @@ header {
 
 .hero-stats {
     display: flex;
-
     gap: 0;
 
     margin-top: 38px;
+
+    animation:
+        fadeUp 1s ease 0.25s both;
 }
 
 .stat {
@@ -467,7 +581,6 @@ header {
     font-family: 'Sora', sans-serif;
 
     font-size: 22px;
-
     font-weight: 800;
 
     color: #172554;
@@ -494,9 +607,7 @@ header {
     min-height: 520px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     position: relative;
@@ -504,15 +615,39 @@ header {
     z-index: 4;
 }
 
+.hero-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.12),
+            transparent 67%
+        );
+
+    filter: blur(8px);
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   PET CIRCLE
+========================================================= */
+
 .blended-image {
     width: min(455px, 90%);
-
     aspect-ratio: 1 / 1;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     position: relative;
@@ -521,10 +656,10 @@ header {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
+            circle at 50% 40%,
             #ffffff 0%,
-            #eef6ff 42%,
-            #dbeafe 72%,
+            #f3f8ff 43%,
+            #dbeafe 74%,
             #bfdbfe 100%
         );
 
@@ -533,6 +668,10 @@ header {
 
     animation:
         floatImage 4s ease-in-out infinite;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 .blended-image::before {
@@ -559,12 +698,12 @@ header {
 
     inset: 13px;
 
-    border: 1px solid rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(255,255,255,0.95);
 
     border-radius: 50%;
 
     box-shadow:
-        inset 0 0 40px rgba(37, 99, 235, 0.08);
+        inset 0 0 45px rgba(37, 99, 235, 0.08);
 
     pointer-events: none;
 }
@@ -587,11 +726,20 @@ header {
 
     filter:
         drop-shadow(
-            0 15px 25px rgba(37, 99, 235, 0.12)
+            0 18px 30px rgba(37, 99, 235, 0.17)
         );
 
     transition:
         transform 0.4s ease;
+}
+
+.blended-image:hover {
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 38px 90px rgba(37, 99, 235, 0.25);
 }
 
 .blended-image:hover img {
@@ -612,13 +760,10 @@ header {
     height: 66px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     border: 4px solid white;
-
     border-radius: 50%;
 
     background: white;
@@ -630,6 +775,13 @@ header {
 
     animation:
         badgeFloat 3s ease-in-out infinite;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.pet-badge:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .badge1 {
@@ -664,7 +816,6 @@ header {
     opacity: 0.14;
 
     user-select: none;
-
     pointer-events: none;
 }
 
@@ -697,21 +848,21 @@ header {
 
 
 /* =========================================================
-   SERVICES
+   SERVICES SECTION
 ========================================================= */
 
 .services {
     position: relative;
 
-    padding: 90px 7%;
+    padding: 95px 7%;
 
     overflow: hidden;
 
     background:
         linear-gradient(
             180deg,
-            #ffffff,
-            #f3f8ff
+            #ffffff 0%,
+            #f7fbff 100%
         );
 }
 
@@ -720,12 +871,12 @@ header {
 
     position: absolute;
 
-    top: 30px;
+    top: 35px;
     left: 4%;
 
     font-size: 72px;
 
-    opacity: 0.08;
+    opacity: 0.07;
 
     transform: rotate(-20deg);
 }
@@ -740,14 +891,13 @@ header {
 
     font-size: 72px;
 
-    opacity: 0.08;
+    opacity: 0.07;
 
     transform: rotate(18deg);
 }
 
 .services h2 {
     position: relative;
-
     z-index: 2;
 
     text-align: center;
@@ -771,11 +921,13 @@ header {
     margin-top: 10px;
 
     font-size: 20px;
+
+    opacity: 0.75;
 }
 
 
 /* =========================================================
-   SERVICE CARDS
+   SERVICE CARDS GRID
 ========================================================= */
 
 .cards {
@@ -795,6 +947,11 @@ header {
     z-index: 2;
 }
 
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
 .card {
     min-height: 345px;
 
@@ -806,7 +963,12 @@ header {
 
     color: inherit;
 
-    background: white;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfdff
+        );
 
     border: 1px solid #e5edf9;
 
@@ -816,8 +978,13 @@ header {
         0 10px 28px rgba(37, 99, 235, 0.07);
 
     transition:
-        all 0.35s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
 }
+
+
+/* top accent */
 
 .card::before {
     content: "";
@@ -828,6 +995,9 @@ header {
 
     background: #2563eb;
 }
+
+
+/* arrow */
 
 .card::after {
     content: "→";
@@ -841,7 +1011,6 @@ header {
     height: 40px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -852,7 +1021,6 @@ header {
     color: #2563eb;
 
     font-size: 20px;
-
     font-weight: 700;
 
     opacity: 0;
@@ -860,7 +1028,10 @@ header {
     transform: translateX(-8px);
 
     transition:
-        all 0.3s ease;
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
 .card:hover {
@@ -869,14 +1040,23 @@ header {
     border-color: #bfdbfe;
 
     box-shadow:
-        0 22px 45px rgba(37, 99, 235, 0.14);
+        0 25px 50px rgba(37, 99, 235, 0.15);
 }
 
 .card:hover::after {
     opacity: 1;
 
     transform: translateX(0);
+
+    background: #2563eb;
+
+    color: white;
 }
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
 
 .card img {
     width: 100%;
@@ -887,12 +1067,22 @@ header {
     object-fit: cover;
 
     transition:
-        transform 0.45s ease;
+        transform 0.45s ease,
+        filter 0.45s ease;
 }
 
 .card:hover img {
     transform: scale(1.07);
+
+    filter:
+        brightness(1.03)
+        saturate(1.06);
 }
+
+
+/* =========================================================
+   CARD TEXT
+========================================================= */
 
 .card h3 {
     margin:
@@ -903,10 +1093,16 @@ header {
     font-size: 20px;
 
     color: #172554;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .card:hover h3 {
     color: #2563eb;
+
+    transform: translateX(3px);
 }
 
 .card p {
@@ -983,25 +1179,95 @@ header {
 
 
 /* =========================================================
+   CARD LIGHT SHINE
+========================================================= */
+
+.card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover {
+    --shine-position: 100%;
+}
+
+.card {
+    isolation: isolate;
+}
+
+.card:has(img)::after {
+    z-index: 4;
+}
+
+
+/* =========================================================
    FOOTER
 ========================================================= */
 
 footer {
-    padding: 50px 20px;
+    position: relative;
+
+    padding: 55px 20px;
 
     text-align: center;
 
     color: white;
 
+    overflow: hidden;
+
     background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(96,165,250,0.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 100%,
+            rgba(37,99,235,0.18),
+            transparent 35%
+        ),
         linear-gradient(
             135deg,
+            #0f172a,
             #172554,
             #1e3a8a
         );
 }
 
+footer::before {
+    content: "🐾";
+
+    position: absolute;
+
+    left: 8%;
+    top: 25px;
+
+    font-size: 80px;
+
+    opacity: 0.05;
+
+    transform: rotate(-15deg);
+}
+
+footer::after {
+    content: "🐾";
+
+    position: absolute;
+
+    right: 8%;
+    bottom: 15px;
+
+    font-size: 80px;
+
+    opacity: 0.05;
+
+    transform: rotate(15deg);
+}
+
 footer h3 {
+    position: relative;
+    z-index: 2;
+
     margin-bottom: 9px;
 
     font-family: 'Sora', sans-serif;
@@ -1012,6 +1278,9 @@ footer h3 {
 }
 
 footer p {
+    position: relative;
+    z-index: 2;
+
     color: #cbd5e1;
 
     font-size: 15px;
@@ -1023,7 +1292,6 @@ footer p {
 ========================================================= */
 
 @keyframes floatImage {
-
     0%,
     100% {
         transform: translateY(0);
@@ -1035,7 +1303,6 @@ footer p {
 }
 
 @keyframes badgeFloat {
-
     0%,
     100% {
         transform: translateY(0);
@@ -1047,7 +1314,6 @@ footer p {
 }
 
 @keyframes rotateCircle {
-
     from {
         transform: rotate(0deg);
     }
@@ -1057,12 +1323,58 @@ footer p {
     }
 }
 
+@keyframes navbarLine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes heroTitle {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes badgeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* =========================================================
    TABLET
 ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 
     header {
         padding: 0 5%;
@@ -1077,7 +1389,7 @@ footer p {
     }
 
     .hero-text h1 {
-        font-size: 52px;
+        font-size: 54px;
     }
 
     .blended-image {
@@ -1097,6 +1409,8 @@ footer p {
 
 @media (max-width: 700px) {
 
+    /* NAVBAR */
+
     header {
         height: 72px;
         padding: 0 18px;
@@ -1109,7 +1423,10 @@ footer p {
     .logo-box {
         width: 48px;
         height: 48px;
+
         font-size: 25px;
+
+        border-radius: 14px;
     }
 
     .logo-text h2 {
@@ -1127,7 +1444,10 @@ footer p {
     .icon-btn {
         width: 38px;
         height: 38px;
+
         font-size: 16px;
+
+        border-radius: 12px;
     }
 
 
@@ -1137,22 +1457,25 @@ footer p {
         min-height: auto;
 
         padding:
-            55px 22px 75px;
+            55px 22px
+            75px;
 
         flex-direction: column;
 
         text-align: center;
 
         gap: 20px;
+
+        border-bottom-left-radius: 45px;
+        border-bottom-right-radius: 45px;
     }
-	
-	.hero {
-	    border-bottom-left-radius: 45px;
-	    border-bottom-right-radius: 45px;
-	}
 
     .hero-text {
         max-width: 100%;
+    }
+
+    .hero-text::before {
+        display: none;
     }
 
     .hero-badge {
@@ -1161,7 +1484,6 @@ footer p {
 
     .hero-text h1 {
         font-size: 40px;
-
         letter-spacing: -1.5px;
     }
 
@@ -1172,43 +1494,26 @@ footer p {
 
     .hero-text p {
         font-size: 16px;
+        line-height: 1.65;
     }
 
-	.explore-btn {
-	    position: relative;
-	    overflow: hidden;
-	}
 
-	.explore-btn::before {
-	    content: "";
-	    position: absolute;
+    /* BUTTON */
 
-	    top: 0;
-	    left: -100%;
+    .explore-btn {
+        padding:
+            15px 25px;
 
-	    width: 70%;
-	    height: 100%;
+        font-size: 15px;
+    }
 
-	    background: linear-gradient(
-	        90deg,
-	        transparent,
-	        rgba(255,255,255,0.30),
-	        transparent
-	    );
-
-	    transform: skewX(-20deg);
-
-	    transition: left 0.6s ease;
-	}
-
-	.explore-btn:hover::before {
-	    left: 130%;
-	}
 
     /* STATS */
 
     .hero-stats {
         justify-content: center;
+
+        margin-top: 32px;
     }
 
     .stat {
@@ -1231,7 +1536,15 @@ footer p {
 
     .hero-image {
         width: 100%;
+
         min-height: 350px;
+
+        margin-top: 5px;
+    }
+
+    .hero-image::before {
+        width: 340px;
+        height: 340px;
     }
 
     .blended-image {
@@ -1239,8 +1552,8 @@ footer p {
     }
 
     .blended-image img {
-        width: 72%;
-        height: 72%;
+        width: 100%;
+        height: 100%;
     }
 
 
@@ -1251,6 +1564,8 @@ footer p {
         height: 52px;
 
         font-size: 23px;
+
+        border-width: 3px;
     }
 
     .badge1 {
@@ -1268,6 +1583,27 @@ footer p {
     }
 
 
+    /* PAWS */
+
+    .paw1 {
+        left: 75%;
+        top: 180px;
+        font-size: 38px;
+    }
+
+    .paw2 {
+        left: 5%;
+        bottom: 30px;
+        font-size: 35px;
+    }
+
+    .paw3 {
+        right: 3%;
+        top: 70px;
+        font-size: 35px;
+    }
+
+
     /* SERVICES */
 
     .services {
@@ -1275,137 +1611,216 @@ footer p {
             65px 20px;
     }
 
+    .services h2 {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+
     .cards {
         grid-template-columns: 1fr;
-
         gap: 20px;
     }
 
     .card {
         min-height: 330px;
+        border-radius: 21px;
+    }
+
+    .card img {
+        height: 190px;
+    }
+
+    .card::after {
+        opacity: 1;
+        transform: translateX(0);
+
+        width: 36px;
+        height: 36px;
+
+        right: 16px;
+        bottom: 17px;
+
+        font-size: 18px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding:
+            45px 20px;
+    }
+
+    footer h3 {
+        font-size: 21px;
+    }
+
+    footer p {
+        font-size: 13px;
     }
 }
 
 
 /* =========================================================
-   VERY SMALL DEVICES
+   SMALL PHONES
 ========================================================= */
 
 @media (max-width: 430px) {
 
+    header {
+        padding: 0 12px;
+    }
+
+    .logo-box {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+    }
+
+    .logo-text h2 {
+        font-size: 18px;
+    }
+
+    .logo-text span {
+        display: none;
+    }
+
+    .nav-icons {
+        gap: 4px;
+    }
+
+    .icon-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding:
+            45px 17px
+            60px;
+    }
+
     .hero-text h1 {
         font-size: 35px;
+        letter-spacing: -1px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .hero-badge {
+        font-size: 10px;
+        padding: 8px 14px;
+    }
+
+    .hero-stats {
+        margin-top: 27px;
+    }
+
+    .stat {
+        padding:
+            0 9px;
+    }
+
+    .stat strong {
+        font-size: 15px;
+    }
+
+    .stat span {
+        font-size: 9px;
+    }
+
+
+    /* IMAGE */
+
+    .hero-image {
+        min-height: 300px;
+    }
+
+    .hero-image::before {
+        width: 280px;
+        height: 280px;
     }
 
     .blended-image {
         width: 250px;
     }
 
+    .blended-image::before {
+        inset: -13px;
+    }
+
+    .blended-image::after {
+        inset: 9px;
+    }
+
     .pet-badge {
         width: 46px;
         height: 46px;
-
         font-size: 20px;
     }
 
-    .hero-image {
-        min-height: 300px;
+    .badge1 {
+        top: 20px;
     }
-	
-	/* =========================================================
-	   HERO IMAGE - PREMIUM EFFECT
-	========================================================= */
 
-	.blended-image {
-	    transition: transform 0.4s ease, box-shadow 0.4s ease;
-	}
-
-	.blended-image:hover {
-	    transform: translateY(-8px) scale(1.02);
-
-	    box-shadow:
-	        0 35px 85px rgba(37, 99, 235, 0.25);
-	}
-
-	.blended-image img {
-	    filter:
-	        drop-shadow(0 18px 30px rgba(37, 99, 235, 0.18));
-	}
+    .badge2 {
+        bottom: 18px;
+    }
 
 
-	/* Soft glow behind the pet/logo */
+    /* SERVICES */
 
-	.hero-image::before {
-	    content: "";
+    .services {
+        padding:
+            55px 15px;
+    }
 
-	    position: absolute;
+    .services h2 {
+        font-size: 27px;
+    }
 
-	    width: 380px;
-	    height: 380px;
+    .card {
+        min-height: 315px;
+        border-radius: 19px;
+    }
 
-	    border-radius: 50%;
+    .card img {
+        height: 175px;
+    }
 
-	    background:
-	        radial-gradient(
-	            circle,
-	            rgba(59, 130, 246, 0.16),
-	            transparent 68%
-	        );
+    .card h3 {
+        font-size: 18px;
+        margin:
+            17px 20px 6px;
+    }
 
-	    filter: blur(10px);
+    .card p {
+        margin:
+            0 20px;
 
-	    z-index: -1;
+        font-size: 14px;
+    }
+}
 
-	    pointer-events: none;
-	}
-	/* =========================================================
-	   PREMIUM SERVICE CARDS
-	========================================================= */
 
-	.card {
-	    transform: translateY(0);
-	    transition:
-	        transform 0.3s ease,
-	        box-shadow 0.3s ease,
-	        border-color 0.3s ease;
-	}
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
-	.card:hover {
-	    transform: translateY(-10px);
+@media (prefers-reduced-motion: reduce) {
 
-	    box-shadow:
-	        0 25px 50px rgba(37, 99, 235, 0.16);
-	}
-
-	.card img {
-	    transition:
-	        transform 0.45s ease;
-	}
-
-	.card:hover img {
-	    transform: scale(1.06);
-	}
-
-	.card h3 {
-	    transition:
-	        color 0.25s ease,
-	        transform 0.25s ease;
-	}
-
-	.card:hover h3 {
-	    color: #2563eb;
-	    transform: translateX(3px);
-	}
-
-	.card::after {
-	    transition:
-	        opacity 0.3s ease,
-	        transform 0.3s ease,
-	        background 0.3s ease;
-	}
-
-	.card:hover::after {
-	    background: #2563eb;
-	    color: white;
-	}
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

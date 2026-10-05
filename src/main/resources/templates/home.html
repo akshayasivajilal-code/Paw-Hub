@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/style/home.css">
+	<link rel="stylesheet" href="/style/pawbot.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
 		<div class="logo">
 
 		    <div class="logo-box">
-		        🐾
+		        ðŸ¾
 		    </div>
 
 		    <div class="logo-text">
@@ -34,19 +35,19 @@
 		    <button class="icon-btn"
 		        onclick="window.location.href='/login'"
 		        title="Login">
-		        <span>🔑</span>
+		        <span>ðŸ”‘</span>
 		    </button>
 
 		    <button class="icon-btn"
 		        onclick="window.location.href='/register'"
 		        title="Register">
-		        <span>👤</span>
+		        <span>ðŸ‘¤</span>
 		    </button>
 
 		    <button class="icon-btn"
 		        onclick="window.location.href='/dashboard'"
 		        title="Dashboard">
-		        <span>🏠</span>
+		        <span>ðŸ </span>
 		    </button>
 
 		</div>
@@ -57,14 +58,14 @@
 	<section class="hero">
 
 	    <!-- Decorative paws -->
-	    <span class="paw paw1">🐾</span>
-	    <span class="paw paw2">🐾</span>
-	    <span class="paw paw3">🐾</span>
+	    <span class="paw paw1">ðŸ¾</span>
+	    <span class="paw paw2">ðŸ¾</span>
+	    <span class="paw paw3">ðŸ¾</span>
 
 	    <div class="hero-text">
 
 	        <div class="hero-badge">
-	            🐾 FOR EVERY PAW
+	            ðŸ¾ FOR EVERY PAW
 	        </div>
 
 	        <h1>
@@ -73,12 +74,12 @@
 	        </h1>
 
 	        <p>
-	            Adoption • Marketplace • Lost & Found • Vet Services
+	            Adoption â€¢ Marketplace â€¢ Lost & Found â€¢ Vet Services
 	        </p>
 
 			<button class="explore-btn"
 			    onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">
-			    Explore Services →
+			    Explore Services â†’
 			</button>
 
 	        <div class="hero-stats">
@@ -110,9 +111,9 @@
 
 	        </div>
 
-	        <div class="pet-badge badge1">🐶</div>
-	        <div class="pet-badge badge2">🐱</div>
-	        <div class="pet-badge badge3">❤️</div>
+	        <div class="pet-badge badge1">ðŸ¶</div>
+	        <div class="pet-badge badge2">ðŸ±</div>
+	        <div class="pet-badge badge3">â¤ï¸</div>
 
 	    </div>
 
@@ -203,12 +204,279 @@
 
         <p>
 
-            Every Paw Deserves a Loving Home 🐾
+            Every Paw Deserves a Loving Home ðŸ¾
 
         </p>
 
     </footer>
+	<!-- ================= PAWHUB PAWBOT ================= -->
 
-</body>
+	<div id="pawbot-root">
+
+	    <button id="pawbot-launcher"
+	            class="pawbot-launcher"
+	            type="button"
+	            title="Open PAWHUB Assistant">
+	        ðŸ¾
+	    </button>
+
+	    <section id="pawbot-window" class="pawbot-window">
+
+	        <div class="pawbot-header">
+
+	            <div>
+	                <strong>PAWHUB Assistant</strong>
+	                <span>â— Online</span>
+	            </div>
+
+	            <button id="pawbot-close" type="button">Ã—</button>
+
+	        </div>
+
+
+	        <div id="pawbot-messages" class="pawbot-messages">
+
+	            <div class="pawbot-msg bot">
+
+	                Hi! ðŸ¾ I'm PawBot.
+
+	                <br><br>
+
+	                I can help you with:
+	                <br>
+	                ðŸ¶ Adoption
+	                <br>
+	                ðŸ©º Vet Finder
+	                <br>
+	                ðŸ’‰ Vaccination
+	                <br>
+	                ðŸ”Ž Lost & Found
+	                <br>
+	                ðŸ›’ Marketplace
+	                <br>
+	                â¤ï¸ Community
+
+	            </div>
+
+	        </div>
+
+
+	        <div class="pawbot-quick">
+
+	            <button type="button" data-q="Show available pets">
+	                ðŸ¶ Adoption
+	            </button>
+
+	            <button type="button" data-q="How can I find a vet">
+	                ðŸ©º Vet
+	            </button>
+
+	            <button type="button" data-q="Tell me about vaccination">
+	                ðŸ’‰ Vaccination
+	            </button>
+
+	            <button type="button" data-q="I lost my pet">
+	                ðŸ”Ž Lost Pet
+	            </button>
+
+	        </div>
+
+
+	        <form id="pawbot-form" class="pawbot-input-area">
+
+	            <input
+	                id="pawbot-input"
+	                type="text"
+	                placeholder="Ask PawBot..."
+	                autocomplete="off"
+	            >
+
+	            <button type="submit">âž¤</button>
+
+	        </form>
+
+	    </section>
+
+	</div>
+	<script>
+	(function () {
+	"use strict";
+
+	const launcher=document.getElementById("pawbot-launcher");
+	const botWindow=document.getElementById("pawbot-window");
+	const closeButton=document.getElementById("pawbot-close");
+	const messages=document.getElementById("pawbot-messages");
+	const form=document.getElementById("pawbot-form");
+	const input=document.getElementById("pawbot-input");
+
+	if(!launcher||!botWindow||!closeButton||!messages||!form||!input){
+	 console.error("PawBot: required HTML elements are missing."); return;
+	}
+
+	function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+	function add(text,type){
+	 const el=document.createElement("div"); el.className="pawbot-msg "+type;
+	 el.innerHTML=type==="bot"?'<div class="pawbot-mini-avatar">ðŸ¶</div><div>'+text+'</div>':'<div>'+esc(text)+'</div>';
+	 messages.appendChild(el); messages.scrollTop=messages.scrollHeight;
+	}
+	function typing(){
+	 const el=document.createElement("div"); el.id="pawbot-typing"; el.className="pawbot-msg bot";
+	 el.innerHTML='<div class="pawbot-mini-avatar">ðŸ¶</div><div class="pawbot-typing-dots"><span></span><span></span><span></span></div>';
+	 messages.appendChild(el); messages.scrollTop=messages.scrollHeight; return el;
+	}
+	function norm(s){return s.toLowerCase().replace(/[â€™']/g,"").replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();}
+	function has(q,a){return a.some(x=>q.includes(x));}
+	function pet(q){if(has(q,["cat","kitten","kitty"]))return"cat";if(has(q,["dog","puppy","canine"]))return"dog";return"pet";}
+
+	function reply(text){
+	 const q=norm(text), p=pet(q);
+
+	 if(has(q,["not breathing","cant breathe","cannot breathe","difficulty breathing","severe bleeding","unconscious","collapse","seizure","poison","poisoned","ate chocolate","hit by car","serious injury"]))
+	 return `ðŸš¨ <b>This may be an emergency.</b><br><br>Breathing difficulty, severe bleeding, collapse, seizures, poisoning or serious injuries can require immediate veterinary attention.<br><br>Contact a veterinarian or emergency veterinary service immediately. Do not give medicines or induce vomiting unless a veterinarian specifically tells you to.`;
+
+	 if(has(q,["hello","hi","hey","hai","hii","good morning","good afternoon","good evening"]))
+	 return `Hi! ðŸ¾ I'm <b>PawBot AI</b>, your PAWHUB pet-care assistant.<br><br>Ask me about food, grooming, vaccination, health, exercise, behaviour, training, puppies, kittens and more.`;
+
+	 if(has(q,["who are you","what are you","your name","what is your name"]))
+	 return `I'm <b>PawBot AI</b> ðŸ¶ â€” the pet-care assistant inside PAWHUB.<br><br>I can answer common pet-care questions and help you navigate PAWHUB services.`;
+
+	 if(has(q,["thank you","thanks","thank u","thx"]))
+	 return `You're welcome! ðŸ¾<br><br>You can ask me another pet-care question anytime.`;
+
+	 if(has(q,["adopt","adoption","available pet","find a pet","want a pet"]))
+	 return `You can browse pets available for adoption through PAWHUB. ðŸ¶ðŸ±<br><br><a class="pawbot-link" href="/adoption">ðŸ¾ Open PAWHUB Adoption</a>`;
+
+	 if(has(q,["lost pet","lost my pet","lost my dog","lost my cat","missing pet","missing dog","missing cat","found a pet"]))
+	 return `PAWHUB Lost & Found can help you share or search for missing-pet information. ðŸ”Ž<br><br><a class="pawbot-link" href="/lost-found">ðŸ”Ž Open Lost & Found</a>`;
+
+	 if(has(q,["marketplace","pet shop","pet supplies","pet products","buy pet food","buy toys","pet accessories"]))
+	 return `You can explore pet products and supplies through PAWHUB Marketplace. ðŸ›’<br><br><a class="pawbot-link" href="/marketplace">ðŸ›’ Open Marketplace</a>`;
+
+	 if(has(q,["community","pet lovers","meet pet owners","pet group","pet forum"]))
+	 return `PAWHUB Community is for connecting with other pet lovers and sharing pet-related content. â¤ï¸<br><br><a class="pawbot-link" href="/community">â¤ï¸ Open Community</a>`;
+
+	 if(has(q,["vet","veterinarian","veterinary","pet doctor","animal doctor","clinic","doctor for my pet"]))
+	 return `A veterinarian can examine your pet and recommend appropriate treatment or preventive care. ðŸ©º<br><br><a class="pawbot-link" href="/vets">ðŸ©º Open PAWHUB Vet Finder</a>`;
+
+	 if(has(q,["puppy vaccine","puppy vaccination","when should i vaccinate my puppy","when to vaccinate puppy"]))
+	 return `Puppy vaccinations usually <b>start around 6â€“8 weeks of age</b> and are given as a series of doses according to the veterinarianâ€™s schedule. ðŸ’‰ðŸ¶<br><br>The exact timing depends on the vaccine, the puppyâ€™s history and local disease risks.<br><br><a class="pawbot-link" href="/vaccination">ðŸ’‰ Open PAWHUB Vaccination</a>`;
+
+	 if(has(q,["kitten vaccine","kitten vaccination","when should i vaccinate my kitten","when to vaccinate kitten"]))
+	 return `Kitten vaccinations usually <b>start around 6â€“8 weeks of age</b> and continue as a series according to the veterinarianâ€™s schedule. ðŸ’‰ðŸ±<br><br>The exact timing depends on the vaccine and the kittenâ€™s history.<br><br><a class="pawbot-link" href="/vaccination">ðŸ’‰ Open PAWHUB Vaccination</a>`;
+
+	 if(has(q,["vaccin","vaccine","vaccination","immunization","immunisation","vaccinated"]))
+	 return `Yes â€” pets need vaccinations to help protect them from important infectious diseases. ðŸ’‰ðŸ¾<br><br><b>Puppies and kittens usually begin their core vaccination series at about 6â€“8 weeks of age.</b> The exact schedule depends on species, age, previous vaccines and local risks.<br><br><a class="pawbot-link" href="/vaccination">ðŸ’‰ Open PAWHUB Vaccination</a>`;
+
+	 if(has(q,["deworm","deworming","worms","worm medicine","parasite"]))
+	 return `Deworming is used to control certain intestinal parasites. ðŸª±<br><br>The medicine and schedule depend on the pet's species, age, weight and parasite risk. Ask a veterinarian for the appropriate product and schedule.`;
+
+	 if(has(q,["flea","fleas","tick","ticks"]))
+	 return `Fleas and ticks can cause skin irritation and may transmit disease. ðŸ¾<br><br>Prevention should be selected according to the pet's species, age and weight. A veterinarian can recommend an appropriate product.`;
+
+	 if(has(q,["chocolate","grape","grapes","raisin","raisins","onion","onions","garlic","xylitol","toxic food","dangerous food"]))
+	 return `Some human foods can be dangerous for pets. âš ï¸<br><br>Examples include chocolate, grapes/raisins, onions, garlic, alcohol and xylitol-containing products.<br><br>If your pet has eaten a potentially toxic substance, contact a veterinarian promptly. Do not induce vomiting unless instructed by a veterinarian.`;
+
+	 if(has(q,["can dogs eat rice","dog eat rice","dogs eat rice","puppy eat rice"]))
+	 return `Yes. <b>Dogs can eat plain, fully cooked rice in moderation.</b> ðŸšðŸ¶<br><br>Serve it plain and avoid rice containing onion, garlic, heavy spices, or very salty sauces.`;
+
+	 if(has(q,["can cats eat rice","cat eat rice","cats eat rice","kitten eat rice"]))
+	 return `Yes, cats can eat a small amount of <b>plain, cooked rice</b>, but it should not replace complete cat food. ðŸšðŸ±<br><br>Avoid seasoned rice, onion, garlic and spicy ingredients.`;
+
+	 if(has(q,["food","feed","feeding","diet","nutrition","eat","eating","meal","meals","treat","treats"]))
+	 return p==="cat"
+	 ? `Cats are obligate carnivores and need nutritionally complete cat food appropriate for their life stage. ðŸ±<br><br>Keep fresh water available. Avoid onions, garlic, chocolate and alcohol.<br><br>For a medical condition or special diet, ask a veterinarian.`
+	 : p==="dog"
+	 ? `Dogs generally need a nutritionally complete diet appropriate for age, size and health. ðŸ¶<br><br>Fresh water should always be available. Avoid chocolate, grapes/raisins, onions, garlic, alcohol and xylitol.<br><br>For a specific diet or medical condition, ask a veterinarian.`
+	 : `A pet's diet depends on species, age, size, activity and health. ðŸ¾<br><br>Use nutritionally complete food designed for that species and life stage. For a special diet, consult a veterinarian.`;
+
+	 if(has(q,["how much water","water per day","how much should my dog drink"]) && p==="dog")
+	 return `A healthy dog often needs roughly <b>50â€“60 mL of water per kg of body weight per day</b>. ðŸ’§ðŸ¶<br><br>For example, a 10 kg dog may need around 500â€“600 mL in a day. Needs can be higher with heat, exercise, dry food or illness. Always keep fresh water available.`;
+
+	 if(has(q,["water","drinking","drink","dehydrated","dehydration"]))
+	 return `Keep <b>fresh, clean water available all day</b>. ðŸ’§ðŸ¾<br><br>The amount a pet needs varies with species, size, food, activity, weather and health. A sudden large increase or decrease in drinking should be discussed with a veterinarian.`;
+
+	 if(has(q,["how many times","how often","frequency"]) && has(q,["bath","bathe","bathing","wash"]) && p==="dog")
+	 return `For most healthy dogs, a bath about <b>every 3â€“4 weeks</b> is a reasonable general routine. ðŸ›ðŸ¶<br><br>Some dogs need baths more or less often depending on their coat, activity and skin condition. If your dog has a skin problem, follow your veterinarianâ€™s bathing schedule.`;
+
+	 if(has(q,["bath","bathe","bathing","shower","wash"]) && p==="cat")
+	 return `Most healthy cats usually <b>do not need regular baths</b> because they groom themselves. ðŸ±ðŸ›<br><br>Give a bath when your cat is unusually dirty, has something unsafe on the coat, or your veterinarian recommends it. Use cat-safe shampoo only.`;
+
+	 if(has(q,["bath","bathe","bathing","shower","wash"]) && p==="pet")
+	 return `Bathing frequency depends on the animal, but for a healthy dog, <b>about every 3â€“4 weeks</b> is a useful general starting point. ðŸ›ðŸ¾<br><br>Coat type, activity and skin health can change that schedule. Use only pet-safe shampoo.`;
+
+	 if(has(q,["brush","brushing"]))
+	 return p==="dog"
+	 ? `Brush your dog <b>a few times a week</b> as a general routine. ðŸ¶<br><br>Long or thick coats may need daily brushing, while short coats may need less. Regular brushing also helps detect mats, parasites and skin problems.`
+	 : p==="cat"
+	 ? `Brush your cat <b>a few times a week</b> if needed. ðŸ±<br><br>Long-haired cats may need daily brushing to prevent mats, while many short-haired cats need less frequent brushing.`
+	 : `Regular brushing helps keep a petâ€™s coat clean and reduces mats. ðŸ¾<br><br>The frequency depends on the species and coat type.`;
+
+	 if(has(q,["human shampoo","people shampoo","baby shampoo"]))
+	 return `No. <b>Do not use human shampoo on your dog or cat.</b> ðŸ§´ðŸš«<br><br>Use a shampoo formulated specifically for pets. Human products can irritate or dry their skin.`;
+
+	 if(has(q,["nail","nails","claw","claws"]) && has(q,["how often","when","frequency"]))
+	 return `Check your petâ€™s nails regularly and trim them when they become too long. ðŸ¾<br><br>For dogs, clicking on hard floors or changes in walking can be signs that nails need attention. If you are unsure how to trim them safely, ask a groomer or veterinarian.`;
+
+	 if(has(q,["ear cleaning","clean ears","clean my dogs ears","clean my cats ears","ear wax"]))
+	 return `Clean your petâ€™s ears <b>only when needed or when your veterinarian recommends it</b>. ðŸ‘‚ðŸ¾<br><br>Do not push cotton buds deep into the ear canal. Redness, bad smell, discharge or frequent scratching needs a veterinary check.`;
+
+	 if(has(q,["teeth","dental","brush my dogs teeth","brush my cats teeth"]))
+	 return `Ideally, brush your petâ€™s teeth <b>daily</b> with a pet-safe toothbrush and toothpaste. ðŸ¦·ðŸ¾<br><br>Never use human toothpaste, especially products containing xylitol.`;
+
+	 if(has(q,["how long should i walk","how much exercise","exercise","walk","walking","run","running","play","playing","physical activity","activity"]))
+	 return p==="dog"
+	 ? `Most healthy adult dogs benefit from <b>daily exercise</b>, often around <b>30â€“60 minutes</b> as a general starting point. ðŸ•<br><br>High-energy breeds may need more, while puppies, seniors and dogs with health problems may need less or shorter sessions.`
+	 : p==="cat"
+	 ? `Give an indoor cat <b>at least 10â€“15 minutes of active play once or twice a day</b>. ðŸ±<br><br>Use toys that encourage chasing, jumping and mental stimulation.`
+	 : `Give your pet regular age-appropriate exercise and play. ðŸ¾<br><br>The right amount depends on species, age, breed, activity level and health.`;
+
+	 if(has(q,["bark","barking","bite","biting","aggressive","aggression","crying","whining","whine","hiding","hide","scratching","anxiety","scared","fear"]))
+	 return `Pet behaviour can have many causes, including normal instincts, fear, stress, boredom, environment or health problems. ðŸ¾<br><br>Avoid punishment. Look for triggers, provide enrichment and use positive reinforcement.<br><br>Sudden major behaviour changes should be discussed with a veterinarian.`;
+
+	 if(has(q,["train","training","potty","toilet training","house train","obedience","teach my dog","teach my puppy"]))
+	 return `Positive-reinforcement training is useful for many dogs. ðŸ¶<br><br>Reward desired behaviour, keep sessions short and consistent, and practise in a low-distraction environment. Avoid punishment-based methods.`;
+
+	 if(has(q,["puppy care","new puppy","puppy"]))
+	 return `Puppies need age-appropriate nutrition, vaccination, parasite prevention, safe socialisation, sleep, exercise and regular veterinary care. ðŸ¶`;
+
+	 if(has(q,["kitten care","new kitten","kitten"]))
+	 return `Kittens need appropriate kitten food, fresh water, a safe environment, litter training, vaccination and veterinary care. ðŸ±`;
+
+	 if(has(q,["vomit","vomiting","diarrhea","diarrhoea","loose motion","not eating","loss of appetite","weak","itchy","itching","cough","coughing","fever","pain","swollen","swelling","constipation","blood in stool","sick","ill","health"]))
+	 return `I'm sorry your pet isn't feeling well. ðŸ¾<br><br>Symptoms such as repeated vomiting, diarrhoea, breathing problems, severe weakness, pain, bleeding, refusal to eat or sudden major changes can need veterinary assessment.<br><br>I can give general information, but I can't diagnose your pet.<br><br><a class="pawbot-link" href="/vets">ðŸ©º Open PAWHUB Vet Finder</a>`;
+
+	 if(has(q,["lifespan","life span","how long do dogs live","how long does a dog live"]))
+	 return `Many dogs live around <b>10â€“13 years</b>, although lifespan varies with breed, size, genetics, nutrition and healthcare. ðŸ¶`;
+
+	 if(has(q,["how long do cats live","how long does a cat live"]))
+	 return `Many indoor cats live into their <b>mid-teens or longer</b>. Lifespan depends on genetics, nutrition, environment and veterinary care. ðŸ±`;
+
+	 if(has(q,["what is a dog","what are dogs","about dogs"]))
+	 return `A dog is a domesticated companion animal. ðŸ¶<br><br>Dogs need balanced nutrition, fresh water, exercise, grooming, vaccination, parasite prevention and regular veterinary care.`;
+
+	 if(has(q,["what is a cat","what are cats","about cats"]))
+	 return `A cat is a domesticated companion animal. ðŸ±<br><br>Cats need appropriate food, fresh water, a clean litter area, enrichment, grooming and regular veterinary care.`;
+
+	 return `I can answer many common pet-care questions directly. ðŸ¾<br><br>Try asking me something specific, such as:<br>â€¢ <b>How often should I bathe my dog?</b><br>â€¢ <b>Can dogs eat rice?</b><br>â€¢ <b>How much water does my dog need?</b><br>â€¢ <b>When should I vaccinate my puppy?</b><br>â€¢ <b>How often should I brush my cat?</b><br>â€¢ <b>What should I do if my dog is vomiting?</b><br><br>If you tell me the pet type, age and the exact problem, I can make the answer more specific.`;
+	}
+
+	function send(text){
+	 text=text.trim(); if(!text)return;
+	 add(text,"user"); input.value="";
+	 const t=typing();
+	 setTimeout(function(){if(t)t.remove();add(reply(text),"bot");},450);
+	}
+
+	launcher.addEventListener("click",function(){botWindow.classList.add("open");botWindow.setAttribute("aria-hidden","false");input.focus();});
+	closeButton.addEventListener("click",function(){botWindow.classList.remove("open");botWindow.setAttribute("aria-hidden","true");});
+	form.addEventListener("submit",function(e){e.preventDefault();send(input.value);});
+	document.querySelectorAll(".pawbot-quick button").forEach(function(b){b.addEventListener("click",function(){send(b.getAttribute("data-q"));});});
+	document.addEventListener("keydown",function(e){if(e.key==="Escape"){botWindow.classList.remove("open");botWindow.setAttribute("aria-hidden","true");}});
+
+	})();
+	</script>
+
+
+	</body>
 
 </html>
